@@ -13,6 +13,19 @@
 		8CE4D8FF25DB46F3005BF8FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D8FE25DB46F3005BF8FA /* Preview Assets.xcassets */; };
 		8CE4D90A25DB46F3005BF8FA /* FitFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D90925DB46F3005BF8FA /* FitFinderTests.swift */; };
 		8CE4D91525DB46F3005BF8FA /* FitFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D91425DB46F3005BF8FA /* FitFinderUITests.swift */; };
+		8CE4D92625DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D92525DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift */; };
+		8CE4D93725DB48B8005BF8FA /* tshirt3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D92D25DB48B8005BF8FA /* tshirt3.jpg */; };
+		8CE4D93825DB48B8005BF8FA /* tshirt2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D92E25DB48B8005BF8FA /* tshirt2.jpg */; };
+		8CE4D93925DB48B8005BF8FA /* yellowpants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D92F25DB48B8005BF8FA /* yellowpants.jpg */; };
+		8CE4D93A25DB48B8005BF8FA /* summerOutfit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D93025DB48B8005BF8FA /* summerOutfit.jpg */; };
+		8CE4D93B25DB48B8005BF8FA /* sweatpants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D93125DB48B8005BF8FA /* sweatpants.jpg */; };
+		8CE4D93C25DB48B8005BF8FA /* longsleeve.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D93225DB48B8005BF8FA /* longsleeve.jpg */; };
+		8CE4D93D25DB48B8005BF8FA /* longsleeve3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D93325DB48B8005BF8FA /* longsleeve3.jpg */; };
+		8CE4D93E25DB48B8005BF8FA /* longsleeve2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D93425DB48B8005BF8FA /* longsleeve2.jpg */; };
+		8CE4D93F25DB48B8005BF8FA /* tshirt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D93525DB48B8005BF8FA /* tshirt.jpg */; };
+		8CE4D94025DB48B8005BF8FA /* pants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D93625DB48B8005BF8FA /* pants.jpg */; };
+		8CE4D94525DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D94425DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift */; };
+		8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D94925DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +58,19 @@
 		8CE4D91025DB46F3005BF8FA /* FitFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE4D91425DB46F3005BF8FA /* FitFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFinderUITests.swift; sourceTree = "<group>"; };
 		8CE4D91625DB46F3005BF8FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CE4D92525DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitSubmissionSwiftUIView.swift; sourceTree = "<group>"; };
+		8CE4D92D25DB48B8005BF8FA /* tshirt3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tshirt3.jpg; sourceTree = "<group>"; };
+		8CE4D92E25DB48B8005BF8FA /* tshirt2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tshirt2.jpg; sourceTree = "<group>"; };
+		8CE4D92F25DB48B8005BF8FA /* yellowpants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yellowpants.jpg; sourceTree = "<group>"; };
+		8CE4D93025DB48B8005BF8FA /* summerOutfit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = summerOutfit.jpg; sourceTree = "<group>"; };
+		8CE4D93125DB48B8005BF8FA /* sweatpants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sweatpants.jpg; sourceTree = "<group>"; };
+		8CE4D93225DB48B8005BF8FA /* longsleeve.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = longsleeve.jpg; sourceTree = "<group>"; };
+		8CE4D93325DB48B8005BF8FA /* longsleeve3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = longsleeve3.jpg; sourceTree = "<group>"; };
+		8CE4D93425DB48B8005BF8FA /* longsleeve2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = longsleeve2.jpg; sourceTree = "<group>"; };
+		8CE4D93525DB48B8005BF8FA /* tshirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tshirt.jpg; sourceTree = "<group>"; };
+		8CE4D93625DB48B8005BF8FA /* pants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pants.jpg; sourceTree = "<group>"; };
+		8CE4D94425DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardrobeNavigationSwiftUIView.swift; sourceTree = "<group>"; };
+		8CE4D94925DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingSubmissionSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +121,8 @@
 		8CE4D8F625DB46F1005BF8FA /* FitFinder */ = {
 			isa = PBXGroup;
 			children = (
+				8CE4D92B25DB489B005BF8FA /* PlaceHolderAssets */,
+				8CE4D92A25DB4889005BF8FA /* SwiftUIViews */,
 				8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */,
 				8CE4D8F925DB46F1005BF8FA /* ContentView.swift */,
 				8CE4D8FB25DB46F3005BF8FA /* Assets.xcassets */,
@@ -128,6 +156,41 @@
 				8CE4D91625DB46F3005BF8FA /* Info.plist */,
 			);
 			path = FitFinderUITests;
+			sourceTree = "<group>";
+		};
+		8CE4D92A25DB4889005BF8FA /* SwiftUIViews */ = {
+			isa = PBXGroup;
+			children = (
+				8CE4D92525DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift */,
+				8CE4D94425DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift */,
+				8CE4D94925DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift */,
+			);
+			path = SwiftUIViews;
+			sourceTree = "<group>";
+		};
+		8CE4D92B25DB489B005BF8FA /* PlaceHolderAssets */ = {
+			isa = PBXGroup;
+			children = (
+				8CE4D92C25DB48B8005BF8FA /* Outfit Pictures */,
+			);
+			path = PlaceHolderAssets;
+			sourceTree = "<group>";
+		};
+		8CE4D92C25DB48B8005BF8FA /* Outfit Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				8CE4D92D25DB48B8005BF8FA /* tshirt3.jpg */,
+				8CE4D92E25DB48B8005BF8FA /* tshirt2.jpg */,
+				8CE4D92F25DB48B8005BF8FA /* yellowpants.jpg */,
+				8CE4D93025DB48B8005BF8FA /* summerOutfit.jpg */,
+				8CE4D93125DB48B8005BF8FA /* sweatpants.jpg */,
+				8CE4D93225DB48B8005BF8FA /* longsleeve.jpg */,
+				8CE4D93325DB48B8005BF8FA /* longsleeve3.jpg */,
+				8CE4D93425DB48B8005BF8FA /* longsleeve2.jpg */,
+				8CE4D93525DB48B8005BF8FA /* tshirt.jpg */,
+				8CE4D93625DB48B8005BF8FA /* pants.jpg */,
+			);
+			path = "Outfit Pictures";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +296,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CE4D93725DB48B8005BF8FA /* tshirt3.jpg in Resources */,
+				8CE4D93C25DB48B8005BF8FA /* longsleeve.jpg in Resources */,
+				8CE4D94025DB48B8005BF8FA /* pants.jpg in Resources */,
 				8CE4D8FF25DB46F3005BF8FA /* Preview Assets.xcassets in Resources */,
+				8CE4D93825DB48B8005BF8FA /* tshirt2.jpg in Resources */,
+				8CE4D93A25DB48B8005BF8FA /* summerOutfit.jpg in Resources */,
+				8CE4D93D25DB48B8005BF8FA /* longsleeve3.jpg in Resources */,
+				8CE4D93E25DB48B8005BF8FA /* longsleeve2.jpg in Resources */,
+				8CE4D93B25DB48B8005BF8FA /* sweatpants.jpg in Resources */,
 				8CE4D8FC25DB46F3005BF8FA /* Assets.xcassets in Resources */,
+				8CE4D93925DB48B8005BF8FA /* yellowpants.jpg in Resources */,
+				8CE4D93F25DB48B8005BF8FA /* tshirt.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +333,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */,
+				8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */,
 				8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */,
+				8CE4D94525DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift in Sources */,
+				8CE4D92625DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
