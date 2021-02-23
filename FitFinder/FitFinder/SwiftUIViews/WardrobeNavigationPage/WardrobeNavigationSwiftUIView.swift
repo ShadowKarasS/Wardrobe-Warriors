@@ -52,7 +52,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         .padding(10)
                     }
                     HStack {
-                        Text("  Shirts")
+                        Text("   Shirts")
                             .font(.headline)
                         Spacer()
                     }
@@ -83,7 +83,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         .padding(10)
                     }
                     HStack {
-                        Text("  Pants")
+                        Text("   Pants")
                             .font(.headline)
                         Spacer()
                     }

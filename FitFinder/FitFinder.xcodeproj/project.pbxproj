@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C05E3C525E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */; };
 		8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */; };
 		8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F925DB46F1005BF8FA /* ContentView.swift */; };
 		8CE4D8FC25DB46F3005BF8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D8FB25DB46F3005BF8FA /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingPictureSwiftUIView.swift; sourceTree = "<group>"; };
 		8CE4D8F425DB46F1005BF8FA /* FitFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFinderApp.swift; sourceTree = "<group>"; };
 		8CE4D8F925DB46F1005BF8FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C05E3BE25E449970020AF41 /* OutfitSubmissionPage */ = {
+			isa = PBXGroup;
+			children = (
+				8CE4D92525DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift */,
+			);
+			path = OutfitSubmissionPage;
+			sourceTree = "<group>";
+		};
+		8C05E3BF25E449AE0020AF41 /* WardrobeNavigationPage */ = {
+			isa = PBXGroup;
+			children = (
+				8CE4D94425DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift */,
+			);
+			path = WardrobeNavigationPage;
+			sourceTree = "<group>";
+		};
+		8C05E3C025E449C30020AF41 /* ClothingSubmissionPage */ = {
+			isa = PBXGroup;
+			children = (
+				8CE4D94925DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift */,
+				8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */,
+			);
+			path = ClothingSubmissionPage;
+			sourceTree = "<group>";
+		};
 		8CE4D8EB25DB46F1005BF8FA = {
 			isa = PBXGroup;
 			children = (
@@ -161,9 +188,9 @@
 		8CE4D92A25DB4889005BF8FA /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
-				8CE4D92525DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift */,
-				8CE4D94425DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift */,
-				8CE4D94925DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift */,
+				8C05E3C025E449C30020AF41 /* ClothingSubmissionPage */,
+				8C05E3BF25E449AE0020AF41 /* WardrobeNavigationPage */,
+				8C05E3BE25E449970020AF41 /* OutfitSubmissionPage */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -332,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C05E3C525E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift in Sources */,
 				8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */,
 				8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */,
 				8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */,

@@ -11,19 +11,6 @@ struct OutfitSubmissionSwiftUIView: View {
     var body: some View {
         NavigationView {
             VStack {
-                VStack {
-                    HStack {
-                        Text("Today's Picks")
-                            .font(.largeTitle)
-                        Spacer()
-                    }
-                    .padding(3)
-                    HStack {
-                        Text("  For 68°")
-                        Spacer()
-                    }
-
-                }
 
                 
                 ScrollView(.vertical, showsIndicators: false) {
@@ -76,7 +63,7 @@ struct OutfitSubmissionSwiftUIView: View {
                 }
                 Spacer()
             }
-//            .navigationBarTitle(Text(""), displayMode: .inline)
+            .navigationBarTitle("Today's Picks for 68º")
 //            .navigationBarItems(trailing:
 //                                    Button("Wardrobe") {
 //                                        print("Outfits")
