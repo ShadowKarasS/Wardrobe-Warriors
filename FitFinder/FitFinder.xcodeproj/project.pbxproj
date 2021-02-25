@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		8C05E3C525E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */; };
+		8C05E3ED25E4811A0020AF41 /* ArticleOfClothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3EC25E4811A0020AF41 /* ArticleOfClothing.swift */; };
+		8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3F425E484FA0020AF41 /* Colors.swift */; };
+		8C05E3FC25E5BD660020AF41 /* FitFinderModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3FA25E5BD660020AF41 /* FitFinderModel.xcdatamodeld */; };
+		8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E41525E5CA730020AF41 /* Extensions.swift */; };
+		8C05E41F25E5CF610020AF41 /* ArticleOfClothing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E41D25E5CF610020AF41 /* ArticleOfClothing+CoreDataClass.swift */; };
+		8C05E42025E5CF610020AF41 /* ArticleOfClothing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E41E25E5CF610020AF41 /* ArticleOfClothing+CoreDataProperties.swift */; };
 		8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */; };
 		8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F925DB46F1005BF8FA /* ContentView.swift */; };
 		8CE4D8FC25DB46F3005BF8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D8FB25DB46F3005BF8FA /* Assets.xcassets */; };
@@ -48,6 +54,12 @@
 
 /* Begin PBXFileReference section */
 		8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingPictureSwiftUIView.swift; sourceTree = "<group>"; };
+		8C05E3EC25E4811A0020AF41 /* ArticleOfClothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleOfClothing.swift; sourceTree = "<group>"; };
+		8C05E3F425E484FA0020AF41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitFinderModel.xcdatamodel; sourceTree = "<group>"; };
+		8C05E41525E5CA730020AF41 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8C05E41D25E5CF610020AF41 /* ArticleOfClothing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8C05E41E25E5CF610020AF41 /* ArticleOfClothing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8CE4D8F425DB46F1005BF8FA /* FitFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFinderApp.swift; sourceTree = "<group>"; };
 		8CE4D8F925DB46F1005BF8FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,6 +137,27 @@
 			path = ClothingSubmissionPage;
 			sourceTree = "<group>";
 		};
+		8C05E3EB25E480F00020AF41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8C05E40325E5C0050020AF41 /* CoreData */,
+				8C05E3EC25E4811A0020AF41 /* ArticleOfClothing.swift */,
+				8C05E3F425E484FA0020AF41 /* Colors.swift */,
+				8C05E41525E5CA730020AF41 /* Extensions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8C05E40325E5C0050020AF41 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8C05E41D25E5CF610020AF41 /* ArticleOfClothing+CoreDataClass.swift */,
+				8C05E41E25E5CF610020AF41 /* ArticleOfClothing+CoreDataProperties.swift */,
+				8C05E3FA25E5BD660020AF41 /* FitFinderModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		8CE4D8EB25DB46F1005BF8FA = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +181,7 @@
 		8CE4D8F625DB46F1005BF8FA /* FitFinder */ = {
 			isa = PBXGroup;
 			children = (
+				8C05E3EB25E480F00020AF41 /* Model */,
 				8CE4D92B25DB489B005BF8FA /* PlaceHolderAssets */,
 				8CE4D92A25DB4889005BF8FA /* SwiftUIViews */,
 				8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */,
@@ -360,8 +394,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C05E3C525E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift in Sources */,
+				8C05E42025E5CF610020AF41 /* ArticleOfClothing+CoreDataProperties.swift in Sources */,
+				8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */,
+				8C05E3ED25E4811A0020AF41 /* ArticleOfClothing.swift in Sources */,
+				8C05E3FC25E5BD660020AF41 /* FitFinderModel.xcdatamodeld in Sources */,
+				8C05E41F25E5CF610020AF41 /* ArticleOfClothing+CoreDataClass.swift in Sources */,
 				8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */,
 				8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */,
+				8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */,
 				8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */,
 				8CE4D94525DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift in Sources */,
 				8CE4D92625DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift in Sources */,
@@ -684,6 +724,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8C05E3FA25E5BD660020AF41 /* FitFinderModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */,
+			);
+			currentVersion = 8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */;
+			path = FitFinderModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8CE4D8EC25DB46F1005BF8FA /* Project object */;
 }
