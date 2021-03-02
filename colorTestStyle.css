@@ -1,0 +1,41 @@
+#wrapper {
+    width: 100%;
+    border: 2px solid black;
+    height: 450px;
+}
+
+.vertical {
+    margin: 16px;
+    width: 30%;
+    float: left;
+/*    height: 250px;*/
+}
+
+/*
+.box {
+    height: 200px;
+}
+*/
+
+#RGB {
+    background-color: rgb(0, 0, 0);
+    height: 200px;
+}
+
+/*
+#red {
+    background-color:  red;
+}
+
+#green {
+    background-color: green;
+}
+
+#blue {
+    background-color: blue;
+}
+*/
+
+p, h1 {
+    text-align: center;
+}
