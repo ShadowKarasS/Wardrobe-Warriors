@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+    
+<head>
+    <title>Color Testing</title>
+    <meta charset="utf-8">
+    <link href="colorTestStyle.css" rel="stylesheet">
+</head>
+
+    
+    
+<body>
+    <div id="wrapper">
+        <div id="RGB"></div>
+        
+        <div class="vertical">
+<!--            <div class="box" id="red"></div>-->
+            <p id="red"><b> R: 255</b></p>
+            
+        </div>
+        
+        <div class="vertical">
+<!--            <div class="box" id="green"></div>-->
+            <p id="green"><b> G: 255</b></p>
+        </div>
+        
+        <div class="vertical">
+<!--            <div class="box" id="blue"></div>-->
+            <p id="blue"><b> B: 255</b></p>
+        </div>
+        
+        <button onclick="refresh()"> Refresh! </button>
+        <button onclick="hide()"> Hide! </button>
+        <button onclick="show()"> Show! </button>
+        
+        <h1> The color is... </h1>
+        <h1 id="color"> BLACK </h1>
+    </div> 
+    
+    
+    <script>
+        function refresh() {
+            var red = Math.floor(Math.random() * 255);
+            var green = Math.floor(Math.random() * 255);
+            var blue = Math.floor(Math.random() * 255);
+            document.getElementById("RGB").style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+            console.log("RED VALUE: " + red + "\n GREEN VALUE: " + green + "\n BLUE VALUE: " + blue);
+            
+            document.getElementById("red").innerHTML = "R: " + red;
+            document.getElementById("green").innerHTML = "G: " + green;
+            document.getElementById("blue").innerHTML = "B: " + blue;
+            
+            
+            // if the color is black
+            if(red < 50 && blue < 50 && green < 50) {
+                document.getElementById("color").innerHTML = "BLACK";
+            }
+            // if the color is white
+            else if(red > 250 && blue > 250 && green > 250) {
+                document.getElementById("color").innerHTML = "WHITE";
+            }
+            // if the color is yellow
+            else if(blue < 130 && green > 210 && red > 220) {
+                document.getElementById("color").innerHTML = "YELLOW RANGE";
+            }
+            // if the color is orange
+            // if the color is purple
+            else if(blue > 70 && red > 100) {
+                document.getElementById("color").innerHTML = "PURPLE/PINK RANGE";
+            }
+//            else if(red > 55 && red < 215) {
+//                if(blue > 70) {
+//                    document.getElementById("color").innerHTML = "PURPLE RANGE";
+//                }
+//            }
+            // if the color is pink
+            else if(blue > 100 && red > 215) {
+                document.getElementById("color").innerHTML = "PINK RANGE";
+            }
+            // if the color is bluegreen
+            // if the color is red
+            else if(red > blue && red > green) {
+                document.getElementById("color").innerHTML = "RED RANGE";
+            }
+            // if the color is blue
+            else if(blue > red && blue > green) {
+                document.getElementById("color").innerHTML = "BLUE RANGE"
+            }
+            // if the color is green
+            else if(green > red && green > blue) {
+                document.getElementById("color").innerHTML = "GREEN RANGE"
+            }
+            // if the color is unknown
+            else {
+                document.getElementById("color").innerHTML = "UNKNOWN";
+            }
+            
+        }
+        
+        function hide() {
+            document.getElementById("RGB").style.display = "none";
+        }
+        
+        function show() {
+            document.getElementById("RGB").style.display = "block";
+        }
+    
+    </script>
+</body>
+    
+    
+    
+</html>
