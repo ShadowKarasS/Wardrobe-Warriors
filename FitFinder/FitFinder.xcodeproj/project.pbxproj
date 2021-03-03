@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C05E3C525E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */; };
-		8C05E3ED25E4811A0020AF41 /* ArticleOfClothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3EC25E4811A0020AF41 /* ArticleOfClothing.swift */; };
 		8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3F425E484FA0020AF41 /* Colors.swift */; };
-		8C05E3FC25E5BD660020AF41 /* FitFinderModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3FA25E5BD660020AF41 /* FitFinderModel.xcdatamodeld */; };
 		8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E41525E5CA730020AF41 /* Extensions.swift */; };
 		8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */; };
 		8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F925DB46F1005BF8FA /* ContentView.swift */; };
@@ -56,7 +54,6 @@
 
 /* Begin PBXFileReference section */
 		8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingPictureSwiftUIView.swift; sourceTree = "<group>"; };
-		8C05E3EC25E4811A0020AF41 /* ArticleOfClothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleOfClothing.swift; sourceTree = "<group>"; };
 		8C05E3F425E484FA0020AF41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitFinderModel.xcdatamodel; sourceTree = "<group>"; };
 		8C05E41525E5CA730020AF41 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -145,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				8C05E40325E5C0050020AF41 /* CoreData */,
-				8C05E3EC25E4811A0020AF41 /* ArticleOfClothing.swift */,
 				8C05E3F425E484FA0020AF41 /* Colors.swift */,
 				8CE60BC525EF2D8000D3E4BD /* Formality.swift */,
 				8C05E41525E5CA730020AF41 /* Extensions.swift */,
@@ -403,8 +399,6 @@
 				8CE60BD925EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataProperties.swift in Sources */,
 				8CE60BD825EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataClass.swift in Sources */,
 				8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */,
-				8C05E3ED25E4811A0020AF41 /* ArticleOfClothing.swift in Sources */,
-				8C05E3FC25E5BD660020AF41 /* FitFinderModel.xcdatamodeld in Sources */,
 				8CE60BCE25EF2DA100D3E4BD /* TypeOfClothing.swift in Sources */,
 				8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */,
 				8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */,
@@ -582,7 +576,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -604,7 +598,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -625,7 +619,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitFinder.app/FitFinder";
 			};
 			name = Debug;
@@ -647,7 +641,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitFinder.app/FitFinder";
 			};
 			name = Release;
@@ -667,7 +661,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = FitFinder;
 			};
 			name = Debug;
@@ -687,7 +681,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = FitFinder;
 			};
 			name = Release;
