@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 @objc(ArticleOfClothing)
 public class ArticleOfClothing: NSManagedObject {
@@ -52,7 +53,7 @@ public class ArticleOfClothing: NSManagedObject {
                 } else if green > 125 {
                     return .cyan
                 }
-            } else {
+            } else { // middle section
                 if red < 240 && red > 50 {
                     return .gray
                 } else if red >= 240 {
@@ -81,7 +82,7 @@ public class ArticleOfClothing: NSManagedObject {
             } else if rawTypeOfClothing == "longSleeveShirt" {
                 return .longSleeveShirt
             } else if rawTypeOfClothing == "pants" {
-                return .pant
+                return .pants
             } else if rawTypeOfClothing == "shorts" {
                 return .shorts
             } else {
@@ -89,13 +90,9 @@ public class ArticleOfClothing: NSManagedObject {
             }
         }
         
-        set {
-            rawTypeOfClothing = newValue
-        }
     }
     
-    convenience init(image: UImage?, color: Color, formality: Formality, typeOfClothing: TypeOfClothing, appropriateTemperature: Double) {
-    
+    convenience init(image: UIImage?, color: Color, formality: Formality, typeOfClothing: TypeOfClothing, appropriateTemperature: Double) {
         self.image = image
         self.color = color
         self.formality = formality
