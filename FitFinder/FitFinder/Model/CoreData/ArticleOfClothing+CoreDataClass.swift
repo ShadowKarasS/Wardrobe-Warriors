@@ -2,7 +2,7 @@
 //  ArticleOfClothing+CoreDataClass.swift
 //  FitFinder
 //
-//  Created by Noah Frew on 2/23/21.
+//  Created by Noah Frew on 3/2/21.
 //
 //
 
@@ -11,53 +11,95 @@ import CoreData
 
 @objc(ArticleOfClothing)
 public class ArticleOfClothing: NSManagedObject {
-var image: UIImage? {
-    get {
-        if let rawImage = rawImage {
-            return UIImage(data: rawImage)
-        } else {
-            return nil
+    var image: UIImage? {
+        get {
+            if let rawImage = rawImage {
+                return UIImage(data: rawImage)
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let newValue = newValue {
+                rawImage = newValue.jpegData(compressionQuality: 1.0)
+            }
         }
     }
-    set {
-        if let newValue = newValue {
-            rawImage = newValue.jpegData(compressionQuality: 1.0)
+
+    var color: Colors {
+        get {
+            if red > green && red > blue { // red section
+                if green <= 125 && blue <= 125 {
+                    return .red
+                } else if green > 125 {
+                    return .yellow
+                } else {
+                    return .magenta
+                }
+            } else if green > blue && green > red  { // blue section
+                if blue <= 125 && green <= 125 {
+                    return .green
+                } else if blue > 125 {
+                    return .cyan
+                } else {
+                    return .yellow
+                }
+            } else if blue > red && blue > green { // green section
+                if red <= 125 && green <= 125 {
+                    return .blue
+                } else if red > 125 {
+                    return .magenta
+                } else if green > 125 {
+                    return .cyan
+                }
+            } else {
+                if red < 240 && red > 50 {
+                    return .gray
+                } else if red >= 240 {
+                    return .white
+                } else if red <= 50 {
+                    return .black
+                }
+            }
         }
     }
-}
 
-var color: Colors {
-    get {
-        let color = UIColor(red: rawRed, green: rawGreen, blue: rawBlue, alpha: rawAlpha)
-        let hexString = color.toHexString()
-        // red
-        if rawRed > 138 && rawGreen < 160 && rawBlue < 128 {
-            return .red
-            
-        // orange
-        } else if rawRed == 255 && rawGreen > 68 && rawGreen < 215 && rawBlue < 80 {
-            return .orange
-            
-            // yellow
-        } else if rawRed > 188 && rawGreen > 182 && blue < 225 {
-            return .yellow
+    var formality: Formality {
+        get {
+            if rawFormality == true {
+                return .formal
+            } else {
+                return .casual
+            }
         }
-        // green
-        // indigo
-        // white
-        // black
-        // tan
     }
-}
-
-    // things to test
-    // ::::: Try Percentage
-    // ::::: 
-
-
-
-convenience init(image: UImage?) {
     
-    self.image = image
-}
+    var typeOfClothing: TypeOfClothing {
+        get {
+            if rawTypeOfClothing == "shirt" {
+                return .shirt
+            } else if rawTypeOfClothing == "longSleeveShirt" {
+                return .longSleeveShirt
+            } else if rawTypeOfClothing == "pants" {
+                return .pant
+            } else if rawTypeOfClothing == "shorts" {
+                return .shorts
+            } else {
+                return .skirt
+            }
+        }
+        
+        set {
+            rawTypeOfClothing = newValue
+        }
+    }
+    
+    convenience init(image: UImage?, color: Color, formality: Formality, typeOfClothing: TypeOfClothing, appropriateTemperature: Double) {
+    
+        self.image = image
+        self.color = color
+        self.formality = formality
+        self.typeOfClothing = typeOfClothing
+        self.appropriateTemperature = appropriateTemperature
+    }
 }

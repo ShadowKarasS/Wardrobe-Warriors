@@ -10,15 +10,13 @@ import Foundation
 
 enum Colors {
     case red
-    case orange
     case yellow
     case green
+    case cyan
     case blue
-    case indigo
-    case violet
+    case magenta
     case white
     case black
-    case tan
-    
+    case gray
 }
 
