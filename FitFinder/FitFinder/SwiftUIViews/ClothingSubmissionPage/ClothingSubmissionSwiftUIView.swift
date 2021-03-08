@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ClothingSubmissionSwiftUIView: View {
+//    @Environment(\.managedObjectContext) private var viewContext
+    
     var typesOfClothing = ["TShirt", "Long-Sleeved Shirt", "Pants", "Shorts", "Skirt"]
     @State private var selectedTypeOfClothing = 0
     
@@ -44,6 +47,11 @@ struct ClothingSubmissionSwiftUIView: View {
                 
             }
             .navigationTitle("Add New Clothes")
+            .navigationBarItems(trailing:
+                                    Button("Save") {
+                                        
+                                    }
+            )
         }
     }
 }
