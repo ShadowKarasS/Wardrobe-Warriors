@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C05E3C525E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */; };
+		8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3F425E484FA0020AF41 /* Colors.swift */; };
+		8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E41525E5CA730020AF41 /* Extensions.swift */; };
 		8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */; };
 		8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F925DB46F1005BF8FA /* ContentView.swift */; };
 		8CE4D8FC25DB46F3005BF8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D8FB25DB46F3005BF8FA /* Assets.xcassets */; };
@@ -27,6 +29,10 @@
 		8CE4D94025DB48B8005BF8FA /* pants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D93625DB48B8005BF8FA /* pants.jpg */; };
 		8CE4D94525DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D94425DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift */; };
 		8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D94925DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift */; };
+		8CE60BC625EF2D8000D3E4BD /* Formality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE60BC525EF2D8000D3E4BD /* Formality.swift */; };
+		8CE60BCE25EF2DA100D3E4BD /* TypeOfClothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE60BCD25EF2DA100D3E4BD /* TypeOfClothing.swift */; };
+		8CE60BD825EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE60BD625EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataClass.swift */; };
+		8CE60BD925EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE60BD725EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,9 @@
 
 /* Begin PBXFileReference section */
 		8C05E3C425E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingPictureSwiftUIView.swift; sourceTree = "<group>"; };
+		8C05E3F425E484FA0020AF41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitFinderModel.xcdatamodel; sourceTree = "<group>"; };
+		8C05E41525E5CA730020AF41 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8CE4D8F425DB46F1005BF8FA /* FitFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFinderApp.swift; sourceTree = "<group>"; };
 		8CE4D8F925DB46F1005BF8FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +82,10 @@
 		8CE4D93625DB48B8005BF8FA /* pants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pants.jpg; sourceTree = "<group>"; };
 		8CE4D94425DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardrobeNavigationSwiftUIView.swift; sourceTree = "<group>"; };
 		8CE4D94925DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingSubmissionSwiftUIView.swift; sourceTree = "<group>"; };
+		8CE60BC525EF2D8000D3E4BD /* Formality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formality.swift; sourceTree = "<group>"; };
+		8CE60BCD25EF2DA100D3E4BD /* TypeOfClothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfClothing.swift; sourceTree = "<group>"; };
+		8CE60BD625EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8CE60BD725EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +138,28 @@
 			path = ClothingSubmissionPage;
 			sourceTree = "<group>";
 		};
+		8C05E3EB25E480F00020AF41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8C05E40325E5C0050020AF41 /* CoreData */,
+				8C05E3F425E484FA0020AF41 /* Colors.swift */,
+				8CE60BC525EF2D8000D3E4BD /* Formality.swift */,
+				8C05E41525E5CA730020AF41 /* Extensions.swift */,
+				8CE60BCD25EF2DA100D3E4BD /* TypeOfClothing.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8C05E40325E5C0050020AF41 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8CE60BD625EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataClass.swift */,
+				8CE60BD725EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataProperties.swift */,
+				8C05E3FA25E5BD660020AF41 /* FitFinderModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		8CE4D8EB25DB46F1005BF8FA = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +183,7 @@
 		8CE4D8F625DB46F1005BF8FA /* FitFinder */ = {
 			isa = PBXGroup;
 			children = (
+				8C05E3EB25E480F00020AF41 /* Model */,
 				8CE4D92B25DB489B005BF8FA /* PlaceHolderAssets */,
 				8CE4D92A25DB4889005BF8FA /* SwiftUIViews */,
 				8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */,
@@ -360,8 +396,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C05E3C525E44BDC0020AF41 /* ClothingPictureSwiftUIView.swift in Sources */,
+				8CE60BD925EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataProperties.swift in Sources */,
+				8CE60BD825EF2F4E00D3E4BD /* ArticleOfClothing+CoreDataClass.swift in Sources */,
+				8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */,
+				8CE60BCE25EF2DA100D3E4BD /* TypeOfClothing.swift in Sources */,
 				8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */,
 				8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */,
+				8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */,
+				8CE60BC625EF2D8000D3E4BD /* Formality.swift in Sources */,
 				8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */,
 				8CE4D94525DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift in Sources */,
 				8CE4D92625DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift in Sources */,
@@ -534,7 +576,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -556,7 +598,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -577,7 +619,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitFinder.app/FitFinder";
 			};
 			name = Debug;
@@ -599,7 +641,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitFinder.app/FitFinder";
 			};
 			name = Release;
@@ -619,7 +661,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = FitFinder;
 			};
 			name = Debug;
@@ -639,7 +681,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahfrew.FitFinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = FitFinder;
 			};
 			name = Release;
@@ -684,6 +726,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8C05E3FA25E5BD660020AF41 /* FitFinderModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */,
+			);
+			currentVersion = 8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */;
+			path = FitFinderModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8CE4D8EC25DB46F1005BF8FA /* Project object */;
 }
