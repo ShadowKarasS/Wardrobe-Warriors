@@ -2,7 +2,7 @@
 //  ArticleOfClothing+CoreDataClass.swift
 //  FitFinder
 //
-//  Created by Noah Frew on 3/2/21.
+//  Created by Noah Frew on 3/8/21.
 //
 //
 
@@ -20,6 +20,7 @@ public class ArticleOfClothing: NSManagedObject {
                 return nil
             }
         }
+        
         set {
             if let newValue = newValue {
                 rawImage = newValue.jpegData(compressionQuality: 1.0)
@@ -58,45 +59,54 @@ public class ArticleOfClothing: NSManagedObject {
                     return .gray
                 } else if red >= 240 {
                     return .white
-                } else if red <= 50 {
-                    return .black
                 }
             }
+            
+            return .black
+        }
+        
+        set {
+            
         }
     }
 
     var formality: Formality {
-        get {
-            if rawFormality == true {
-                return .formal
-            } else {
-                return .casual
-            }
+        if rawFormality == Formality.formal.rawValue {
+            return .formal
+        } else {
+            return .casual
         }
     }
     
     var typeOfClothing: TypeOfClothing {
         get {
-            if rawTypeOfClothing == "shirt" {
+            if rawTypeOfClothing == TypeOfClothing.shirt.rawValue {
                 return .shirt
-            } else if rawTypeOfClothing == "longSleeveShirt" {
+            } else if rawTypeOfClothing == TypeOfClothing.longSleeveShirt.rawValue {
                 return .longSleeveShirt
-            } else if rawTypeOfClothing == "pants" {
+            } else if rawTypeOfClothing == TypeOfClothing.pants.rawValue {
                 return .pants
-            } else if rawTypeOfClothing == "shorts" {
+            } else if rawTypeOfClothing == TypeOfClothing.shorts.rawValue {
                 return .shorts
             } else {
                 return .skirt
             }
         }
         
+        set {
+            
+        }
+        
     }
     
-    convenience init(image: UIImage?, color: Color, formality: Formality, typeOfClothing: TypeOfClothing, appropriateTemperature: Double) {
+    convenience init?(context: NSManagedObjectContext, image: UIImage?, color: Colors, rawFormality: String, typeOfClothing: TypeOfClothing, appropriateTemperature: Double) {
+        self.init(entity: ArticleOfClothing.entity(), insertInto: context)
+        
         self.image = image
         self.color = color
-        self.formality = formality
+        self.rawFormality = rawFormality
         self.typeOfClothing = typeOfClothing
         self.appropriateTemperature = appropriateTemperature
+        
     }
 }

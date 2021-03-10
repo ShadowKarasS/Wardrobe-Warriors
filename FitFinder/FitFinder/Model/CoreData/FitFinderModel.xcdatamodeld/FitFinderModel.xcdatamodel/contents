@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ArticleOfClothing" representedClassName="ArticleOfClothing" syncable="YES" codeGenerationType="class">
+    <entity name="ArticleOfClothing" representedClassName="ArticleOfClothing" syncable="YES">
         <attribute name="appropriateTemperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="blue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="green" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="rawFormality" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="rawFormality" optional="YES" attributeType="String"/>
         <attribute name="rawImage" optional="YES" attributeType="Binary"/>
         <attribute name="rawTypeOfClothing" optional="YES" attributeType="String"/>
         <attribute name="red" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
