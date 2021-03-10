@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct WardrobeNavigationSwiftUIView: View {
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -120,11 +122,13 @@ struct WardrobeNavigationSwiftUIView: View {
             .navigationBarItems(leading:
                                     NavigationLink(destination: OutfitSubmissionSwiftUIView()) {
                                         Text("Today's Picks")
-                                    },
+                                    }
+                                    .isDetailLink(false),
                                 trailing:
                                     NavigationLink(destination: ClothingSubmissionSwiftUIView()) {
                                         Image(systemName: "plus").imageScale(.medium)
                                     }
+                                    .isDetailLink(false)
             )
             
         }

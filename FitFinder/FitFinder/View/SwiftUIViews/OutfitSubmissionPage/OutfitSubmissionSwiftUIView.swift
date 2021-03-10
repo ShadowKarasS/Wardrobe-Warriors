@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct OutfitSubmissionSwiftUIView: View {
     var body: some View {
