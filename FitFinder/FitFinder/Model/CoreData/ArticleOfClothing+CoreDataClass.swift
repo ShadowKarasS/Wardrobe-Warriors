@@ -2,7 +2,7 @@
 //  ArticleOfClothing+CoreDataClass.swift
 //  FitFinder
 //
-//  Created by Noah Frew on 3/2/21.
+//  Created by Noah Frew on 3/8/21.
 //
 //
 
@@ -71,7 +71,7 @@ public class ArticleOfClothing: NSManagedObject {
     }
 
     var formality: Formality {
-        if rawFormality == true {
+        if rawFormality == Formality.formal.rawValue {
             return .formal
         } else {
             return .casual
@@ -99,7 +99,7 @@ public class ArticleOfClothing: NSManagedObject {
         
     }
     
-    convenience init?(context: NSManagedObjectContext, image: UIImage?, color: Colors, rawFormality: Bool, typeOfClothing: TypeOfClothing, appropriateTemperature: Double) {
+    convenience init?(context: NSManagedObjectContext, image: UIImage?, color: Colors, rawFormality: String, typeOfClothing: TypeOfClothing, appropriateTemperature: Double) {
         self.init(entity: ArticleOfClothing.entity(), insertInto: context)
         
         self.image = image
