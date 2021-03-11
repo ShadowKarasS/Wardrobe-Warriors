@@ -13,7 +13,7 @@ struct ClothingSubmissionSwiftUIView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     // MARK: Type of Clothing Variables
-    var typesOfClothing = [TypeOfClothing.shirt.rawValue, TypeOfClothing.longSleeveShirt.rawValue, TypeOfClothing.pants.rawValue, TypeOfClothing.shorts.rawValue, TypeOfClothing.pants.rawValue]
+    var typesOfClothing = [TypeOfClothing.shirt.rawValue, TypeOfClothing.longSleeveShirt.rawValue, TypeOfClothing.pants.rawValue, TypeOfClothing.shorts.rawValue, TypeOfClothing.skirt.rawValue]
     @State private var selectedTypeOfClothing = 0
     
     // MARK: Formality Variables
@@ -107,9 +107,8 @@ struct ClothingSubmissionSwiftUIView: View {
     
     
     func addArticleOfClothing() {
-//        newItem = NSEntityDescription.insertNewObject(forEntityName: "Feature", into: context) as! SSFeatureMO
         let newArticleOfClothing = ArticleOfClothing(context: viewContext)
-//        let newArticleOfClothing = NSEntityDescription.insertNewObject(forEntityName: "ArticleOfClothing", into: viewContext) as! ArticleOfClothing
+
         if pickedFormality == 0 {
             newArticleOfClothing.rawFormality = Formality.casual.rawValue
         } else {
@@ -120,12 +119,26 @@ struct ClothingSubmissionSwiftUIView: View {
         newArticleOfClothing.blue = Int16(Int.random(in: 0...255))
         newArticleOfClothing.appropriateTemperature = fahrenheit
         newArticleOfClothing.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
-        newArticleOfClothing.image = selectedImage ?? nil
+        newArticleOfClothing.image = selectedImage
         do {
             try viewContext.save()
         } catch {
             print(error)
         }
+        
+//        let newRawFormality: String
+//        if pickedFormality == 0 {
+//            newRawFormality = Formality.casual.rawValue
+//        } else {
+//            newRawFormality = Formality.formal.rawValue
+//        }
+//        let newRed: Int16 = Int16(Int.random(in: 0...255))
+//        let newGreen: Int16 = Int16(Int.random(in: 0...255))
+//        let newBlue: Int16 = Int16(Int.random(in: 0...255))
+//        let newAppropriateTemperature: Double = fahrenheit
+//        let newTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
+//        let newImage = selectedImage
+//        let newArticleOfClothing = ArticleOfClothing(context: viewContext, image: newImage, red: newRed, blue: newBlue, green: newGreen, rawFormality: newRawFormality, rawTypeOfClothing: newTypeOfClothing, appropriateTemperature: newAppropriateTemperature)
     }
 }
 
