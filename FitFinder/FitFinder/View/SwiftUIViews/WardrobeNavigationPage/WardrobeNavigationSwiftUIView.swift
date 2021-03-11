@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct WardrobeNavigationSwiftUIView: View {
+    @FetchRequest(entity: ArticleOfClothing.entity(), sortDescriptors: []) var articlesOfClothing: FetchedResults<ArticleOfClothing>
+//    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
         NavigationView {
@@ -22,96 +24,122 @@ struct WardrobeNavigationSwiftUIView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     HStack {
-                        Text("  Long Sleeved Shirts")
+                        Text("  " + TypeOfClothing.longSleeveShirt.rawValue)
                             .font(.headline)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 17) {
-                            Image("longsleeve")
-                                .resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
-                            Image("longsleeve3")
-                                .resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
-                            Image("longsleeve2")
-                                .resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
-                            
+                            ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
+                                if articleOfClothing.typeOfClothing == TypeOfClothing.longSleeveShirt {
+                                    if let image = articleOfClothing.image {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .frame(width: 150.0, height: 150.0)
+                                            .aspectRatio(contentMode: .fit)
+                                            .clipShape(Rectangle())
+                                            .cornerRadius(25)
+                                            .shadow(radius: 5)
+                                    }
+                                }
+                                
+                            }
                         }
                         .padding(10)
                     }
                     HStack {
-                        Text("   Shirts")
+                        Text("   " + TypeOfClothing.shirt.rawValue)
                             .font(.headline)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 17) {
-                            Image("tshirt2")
-                                .resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
-                            Image("tshirt3")
-                                .resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
-                            Image("tshirt").resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
-                            
+                            ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
+                                if articleOfClothing.typeOfClothing == TypeOfClothing.shirt {
+                                    if let image = articleOfClothing.image {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .frame(width: 150.0, height: 150.0)
+                                            .aspectRatio(contentMode: .fit)
+                                            .clipShape(Rectangle())
+                                            .cornerRadius(25)
+                                            .shadow(radius: 5)
+                                    }
+                                }
+                                
+                            }
                         }
                         .padding(10)
                     }
                     HStack {
-                        Text("   Pants")
+                        Text("   " + TypeOfClothing.pants.rawValue)
                             .font(.headline)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 17) {
-                            Image("yellowpants")
-                                .resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
-                            Image("pants")
-                                .resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
-                            Image("sweatpants")
-                                .resizable()
-                                .frame(width: 150.0, height: 150.0)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .cornerRadius(25)
-                                .shadow(radius: 5)
+                            ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
+                                if articleOfClothing.typeOfClothing == TypeOfClothing.pants {
+                                    if let image = articleOfClothing.image {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .frame(width: 150.0, height: 150.0)
+                                            .aspectRatio(contentMode: .fit)
+                                            .clipShape(Rectangle())
+                                            .cornerRadius(25)
+                                            .shadow(radius: 5)
+                                    }
+                                }
+                                
+                            }
+                        }
+                        .padding(10)
+                    }
+                    HStack {
+                        Text("   " + TypeOfClothing.shorts.rawValue)
+                            .font(.headline)
+                        Spacer()
+                    }
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(alignment: .top, spacing: 17) {
+                            ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
+                                if articleOfClothing.typeOfClothing == TypeOfClothing.shorts {
+                                    if let image = articleOfClothing.image {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .frame(width: 150.0, height: 150.0)
+                                            .aspectRatio(contentMode: .fit)
+                                            .clipShape(Rectangle())
+                                            .cornerRadius(25)
+                                            .shadow(radius: 5)
+                                    }
+                                }
+                                
+                            }
+                        }
+                        .padding(10)
+                    }
+                    HStack {
+                        Text("   " + TypeOfClothing.skirt.rawValue)
+                            .font(.headline)
+                        Spacer()
+                    }
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(alignment: .top, spacing: 17) {
+                            ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
+                                if articleOfClothing.typeOfClothing == TypeOfClothing.skirt {
+                                    if let image = articleOfClothing.image {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .frame(width: 150.0, height: 150.0)
+                                            .aspectRatio(contentMode: .fit)
+                                            .clipShape(Rectangle())
+                                            .cornerRadius(25)
+                                            .shadow(radius: 5)
+                                    }
+                                }
+                                
+                            }
                         }
                         .padding(10)
                     }

@@ -15,7 +15,7 @@ struct FitFinderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-//                .environment(\.managedObjectContext, persistence.persistentContainer.viewContext)
+                .environment(\.managedObjectContext, persistence.persistentContainer.viewContext)
         }
     }
 }

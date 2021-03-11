@@ -64,10 +64,6 @@ public class ArticleOfClothing: NSManagedObject {
             
             return .black
         }
-        
-        set {
-            
-        }
     }
 
     var formality: Formality {
@@ -93,19 +89,17 @@ public class ArticleOfClothing: NSManagedObject {
             }
         }
         
-        set {
-            
-        }
-        
     }
     
-    convenience init?(context: NSManagedObjectContext, image: UIImage?, color: Colors, rawFormality: String, typeOfClothing: TypeOfClothing, appropriateTemperature: Double) {
+    convenience init?(context: NSManagedObjectContext, image: UIImage?, red: Int16, blue: Int16, green: Int16, rawFormality: String, rawTypeOfClothing: String, appropriateTemperature: Double) {
         self.init(entity: ArticleOfClothing.entity(), insertInto: context)
         
         self.image = image
-        self.color = color
+        self.red = red
+        self.green = green
+        self.blue = blue
         self.rawFormality = rawFormality
-        self.typeOfClothing = typeOfClothing
+        self.rawTypeOfClothing = rawTypeOfClothing
         self.appropriateTemperature = appropriateTemperature
         
     }

@@ -145,12 +145,12 @@
 		8C05E3EB25E480F00020AF41 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8C80286725F8968C00DB16C7 /* PersistenceManager.swift */,
 				8C05E40325E5C0050020AF41 /* CoreData */,
 				8C05E3F425E484FA0020AF41 /* Colors.swift */,
 				8CE60BC525EF2D8000D3E4BD /* Formality.swift */,
 				8C05E41525E5CA730020AF41 /* Extensions.swift */,
 				8CE60BCD25EF2DA100D3E4BD /* TypeOfClothing.swift */,
+				8C80286725F8968C00DB16C7 /* PersistenceManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
