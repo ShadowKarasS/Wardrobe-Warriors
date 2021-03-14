@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Formality {
+enum Formality: String {
     case formal
     case casual
 }
