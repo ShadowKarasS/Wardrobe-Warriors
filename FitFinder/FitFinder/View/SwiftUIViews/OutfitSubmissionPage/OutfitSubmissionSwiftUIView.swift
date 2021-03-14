@@ -11,9 +11,7 @@ import CoreData
 struct OutfitSubmissionSwiftUIView: View {
     var body: some View {
         NavigationView {
-            VStack {
-
-                
+            VStack {     
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     HStack {
