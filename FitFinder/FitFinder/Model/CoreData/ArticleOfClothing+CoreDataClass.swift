@@ -2,7 +2,7 @@
 //  ArticleOfClothing+CoreDataClass.swift
 //  FitFinder
 //
-//  Created by Noah Frew on 3/8/21.
+//  Created by Noah Frew on 3/13/21.
 //
 //
 
@@ -104,3 +104,4 @@ public class ArticleOfClothing: NSManagedObject {
         
     }
 }
+
