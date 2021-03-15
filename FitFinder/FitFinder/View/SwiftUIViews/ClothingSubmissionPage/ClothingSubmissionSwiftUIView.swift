@@ -9,6 +9,9 @@ import SwiftUI
 import CoreData
 
 struct ClothingSubmissionSwiftUIView: View {
+    
+    var existingArticleOfClothing: ArticleOfClothing?
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -26,6 +29,14 @@ struct ClothingSubmissionSwiftUIView: View {
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
+    
+    init() {
+        existingArticleOfClothing = nil
+    }
+    
+    init(articleOfClothing: ArticleOfClothing) {
+        existingArticleOfClothing = articleOfClothing
+    }
     
     var body: some View {
         NavigationView {
@@ -103,42 +114,79 @@ struct ClothingSubmissionSwiftUIView: View {
             addArticleOfClothing()
             self.mode.wrappedValue.dismiss()
         })
+        .onAppear { checkForExistingArticleOfClothing() }
     }
     
     
     func addArticleOfClothing() {
-        let newArticleOfClothing = ArticleOfClothing(context: viewContext)
+        if existingArticleOfClothing != nil {
 
-        if pickedFormality == 0 {
-            newArticleOfClothing.rawFormality = Formality.casual.rawValue
-        } else {
-            newArticleOfClothing.rawFormality = Formality.formal.rawValue
-        }
-        newArticleOfClothing.red = Int16(Int.random(in: 0...255))
-        newArticleOfClothing.green = Int16(Int.random(in: 0...255))
-        newArticleOfClothing.blue = Int16(Int.random(in: 0...255))
-        newArticleOfClothing.appropriateTemperature = fahrenheit
-        newArticleOfClothing.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
-        newArticleOfClothing.image = selectedImage
-        do {
-            try viewContext.save()
-        } catch {
-            print(error)
-        }
+            if pickedFormality == 0 {
+                existingArticleOfClothing!.rawFormality = Formality.casual.rawValue
+            } else {
+                existingArticleOfClothing!.rawFormality = Formality.formal.rawValue
+            }
+            
+            existingArticleOfClothing!.red = Int16(Int.random(in: 0...255))
+            existingArticleOfClothing!.green = Int16(Int.random(in: 0...255))
+            existingArticleOfClothing!.blue = Int16(Int.random(in: 0...255))
+            existingArticleOfClothing!.appropriateTemperature = fahrenheit
+            existingArticleOfClothing!.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
+            existingArticleOfClothing!.image = selectedImage
+            
+            do {
+                try existingArticleOfClothing!.managedObjectContext?.save()
+            } catch {
+                print(error)
+            }
         
-//        let newRawFormality: String
-//        if pickedFormality == 0 {
-//            newRawFormality = Formality.casual.rawValue
-//        } else {
-//            newRawFormality = Formality.formal.rawValue
-//        }
-//        let newRed: Int16 = Int16(Int.random(in: 0...255))
-//        let newGreen: Int16 = Int16(Int.random(in: 0...255))
-//        let newBlue: Int16 = Int16(Int.random(in: 0...255))
-//        let newAppropriateTemperature: Double = fahrenheit
-//        let newTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
-//        let newImage = selectedImage
-//        let newArticleOfClothing = ArticleOfClothing(context: viewContext, image: newImage, red: newRed, blue: newBlue, green: newGreen, rawFormality: newRawFormality, rawTypeOfClothing: newTypeOfClothing, appropriateTemperature: newAppropriateTemperature)
+        } else {
+            let newArticleOfClothing = ArticleOfClothing(context: viewContext)
+
+            if pickedFormality == 0 {
+                newArticleOfClothing.rawFormality = Formality.casual.rawValue
+            } else {
+                newArticleOfClothing.rawFormality = Formality.formal.rawValue
+            }
+            newArticleOfClothing.red = Int16(Int.random(in: 0...255))
+            newArticleOfClothing.green = Int16(Int.random(in: 0...255))
+            newArticleOfClothing.blue = Int16(Int.random(in: 0...255))
+            newArticleOfClothing.appropriateTemperature = fahrenheit
+            newArticleOfClothing.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
+            newArticleOfClothing.image = selectedImage
+            do {
+                try viewContext.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func checkForExistingArticleOfClothing() {
+        if existingArticleOfClothing != nil {
+            fahrenheit = existingArticleOfClothing!.appropriateTemperature
+            selectedImage = existingArticleOfClothing!.image
+            switch existingArticleOfClothing!.formality {
+            case .casual:
+                pickedFormality = 0
+            case .formal:
+                pickedFormality = 1
+            }
+            
+            switch existingArticleOfClothing!.typeOfClothing {
+            case .shirt:
+                selectedTypeOfClothing = 0
+            case .longSleeveShirt:
+                selectedTypeOfClothing = 1
+            case .pants:
+                selectedTypeOfClothing = 2
+            case .shorts:
+                selectedTypeOfClothing = 3
+            case .skirt:
+                selectedTypeOfClothing = 4
+            }
+
+        }
     }
 }
 

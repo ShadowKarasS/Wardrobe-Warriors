@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3F425E484FA0020AF41 /* Colors.swift */; };
 		8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E41525E5CA730020AF41 /* Extensions.swift */; };
+		8C54390525FDD55E00AC55CB /* ArticleOfClothing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C54390325FDD55E00AC55CB /* ArticleOfClothing+CoreDataClass.swift */; };
+		8C54390625FDD55E00AC55CB /* ArticleOfClothing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C54390425FDD55E00AC55CB /* ArticleOfClothing+CoreDataProperties.swift */; };
 		8C8027D625F7030C00DB16C7 /* FitFinderModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3FA25E5BD660020AF41 /* FitFinderModel.xcdatamodeld */; };
-		8C8027EC25F71CD000DB16C7 /* ArticleOfClothing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8027EA25F71CD000DB16C7 /* ArticleOfClothing+CoreDataClass.swift */; };
-		8C8027ED25F71CD000DB16C7 /* ArticleOfClothing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8027EB25F71CD000DB16C7 /* ArticleOfClothing+CoreDataProperties.swift */; };
 		8C80280625F8640D00DB16C7 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80280525F8640D00DB16C7 /* ImagePickerView.swift */; };
 		8C80280E25F8647F00DB16C7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80280D25F8647F00DB16C7 /* Coordinator.swift */; };
 		8C80286825F8968C00DB16C7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80286725F8968C00DB16C7 /* PersistenceManager.swift */; };
@@ -59,8 +59,8 @@
 		8C05E3F425E484FA0020AF41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitFinderModel.xcdatamodel; sourceTree = "<group>"; };
 		8C05E41525E5CA730020AF41 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		8C8027EA25F71CD000DB16C7 /* ArticleOfClothing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8C8027EB25F71CD000DB16C7 /* ArticleOfClothing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8C54390325FDD55E00AC55CB /* ArticleOfClothing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8C54390425FDD55E00AC55CB /* ArticleOfClothing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8C80280525F8640D00DB16C7 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		8C80280D25F8647F00DB16C7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C80286725F8968C00DB16C7 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -158,8 +158,8 @@
 		8C05E40325E5C0050020AF41 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				8C8027EA25F71CD000DB16C7 /* ArticleOfClothing+CoreDataClass.swift */,
-				8C8027EB25F71CD000DB16C7 /* ArticleOfClothing+CoreDataProperties.swift */,
+				8C54390325FDD55E00AC55CB /* ArticleOfClothing+CoreDataClass.swift */,
+				8C54390425FDD55E00AC55CB /* ArticleOfClothing+CoreDataProperties.swift */,
 				8C05E3FA25E5BD660020AF41 /* FitFinderModel.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -417,14 +417,14 @@
 				8C80280625F8640D00DB16C7 /* ImagePickerView.swift in Sources */,
 				8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */,
 				8C80286825F8968C00DB16C7 /* PersistenceManager.swift in Sources */,
-				8C8027EC25F71CD000DB16C7 /* ArticleOfClothing+CoreDataClass.swift in Sources */,
 				8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */,
 				8C8027D625F7030C00DB16C7 /* FitFinderModel.xcdatamodeld in Sources */,
+				8C54390525FDD55E00AC55CB /* ArticleOfClothing+CoreDataClass.swift in Sources */,
+				8C54390625FDD55E00AC55CB /* ArticleOfClothing+CoreDataProperties.swift in Sources */,
 				8CE60BC625EF2D8000D3E4BD /* Formality.swift in Sources */,
 				8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */,
 				8CE4D94525DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift in Sources */,
 				8CE4D92625DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift in Sources */,
-				8C8027ED25F71CD000DB16C7 /* ArticleOfClothing+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
