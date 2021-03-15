@@ -26,7 +26,7 @@ p, h1 {
 #wrapper2 {
     /* display: none; */
     width: 100%;
-    height: 250px;
+    height: 500px;
     border: 2px solid black;
     border-radius: 10px;
     margin-top: 5px;
@@ -55,4 +55,42 @@ p, h1 {
 
 #complementary1 {
     margin-left: 16%;
+}
+
+#tetradicWrapper {
+    float: left;
+    margin-top: 50px;
+    width: 50%;
+    height: 200px;
+}
+
+.box1 {
+    background-color: black;
+    width: 20%;
+    height: 150px;
+    margin: 2px;
+    float: left;
+}
+
+#tetradic1 {
+    margin-left: 10%;
+}
+
+#analogousWrapper {
+    float: left;
+    margin-top: 50px;
+    width: 50%;
+    height: 200px;
+}
+
+.box2 {
+    background-color: black;
+    width: 18%;
+    height: 150px;
+    margin: 2px;
+    float: left;
+}
+
+#analogous1 {
+    margin-left: 5%;
 }
