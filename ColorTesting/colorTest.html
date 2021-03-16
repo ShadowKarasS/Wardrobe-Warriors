@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--my algorithm--> 
+    
+<head>
+    <title>Color Testing</title>
+    <meta charset="utf-8">
+    <link href="colorTestStyle.css" rel="stylesheet">
+</head>
+
+    
+    
+<body>
+    <div id="wrapper">
+        <div id="RGB"></div>
+        
+        <div class="vertical">
+<!--            <div class="box" id="red"></div>-->
+            <p id="red"><b> R: 255</b></p>
+            
+        </div>
+        
+        <div class="vertical">
+<!--            <div class="box" id="green"></div>-->
+            <p id="green"><b> G: 255</b></p>
+        </div>
+        
+        <div class="vertical">
+<!--            <div class="box" id="blue"></div>-->
+            <p id="blue"><b> B: 255</b></p>
+        </div>
+        
+        <h1> The color is... </h1>
+        <h1 id="color"> BLACK </h1>
+    </div> 
+
+
+
+    <div id="wrapper2">
+        <div id="complementaryWrapper">
+            <h1 id="title1">Complementary</h1>
+            <div class="original box" id="complementary1">
+                
+            </div>
+            <div class="box" id="complementary2">
+
+            </div>
+        </div>
+
+        <div id="triadicWrapper">
+            <h1 id="title2">Triadic</h1>
+            <div class="original box" id="triadic1">
+
+            </div>
+            <div class="box" id="triadic2">
+
+            </div>
+            <div class="box" id="triadic3">
+
+            </div>
+        </div>
+
+        <div id="tetradicWrapper">
+            <h1 id="title3">Tetradic</h1>
+            <div class="original box1" id="tetradic1">
+
+            </div>
+            <div class="box1" id="tetradic2">
+
+            </div>
+            <div class="box1" id="tetradic3">
+
+            </div>
+            <div class="box1" id="tetradic4">
+
+            </div>
+        </div>
+
+        <div id="analogousWrapper">
+            <h1 id="title4">Analogous</h1>
+            <div class="original box2" id="analogous1">
+
+            </div>
+            <div class="box2" id="analogous2">
+
+            </div>
+            <div class="box2" id="analogous3">
+
+            </div>
+            <div class="box2" id="analogous4">
+
+            </div>
+            <div class="box2" id="analogous5">
+
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div id="wrapper3">
+        <button onclick="refresh()"> Refresh! </button>
+        <button onclick="hide()"> Hide! </button>
+        <button onclick="show()"> Show! </button>
+    </div>
+    
+    
+
+    <script>
+        function refresh() {
+            // set random RGB values
+            var red = Math.floor(Math.random() * 255);
+            var green = Math.floor(Math.random() * 255);
+            var blue = Math.floor(Math.random() * 255);
+
+            var hslArray = RGBToHSL(red,green,blue);
+            console.log(hslArray);
+
+            // set main color to random values
+            document.getElementById("RGB").style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+            console.log("RED VALUE: " + red + "\n GREEN VALUE: " + green + "\n BLUE VALUE: " + blue);
+            
+            // set titles
+            document.getElementById("red").innerHTML = "R: " + red;
+            document.getElementById("green").innerHTML = "G: " + green;
+            document.getElementById("blue").innerHTML = "B: " + blue;
+            
+
+            /************************* CATEGORIZING COLOR ATTEMPTS ************************/
+
+            // if the color is black
+            if(red < 50 && blue < 50 && green < 50) {
+                document.getElementById("color").innerHTML = "BLACK";
+            }
+            // if the color is white
+            else if(red > 250 && blue > 250 && green > 250) {
+                document.getElementById("color").innerHTML = "WHITE";
+            }
+
+            
+
+            // if the color is in the red range
+            else if(red > blue && red > green) {
+                    // if the color is yellow
+                    if(blue < 130 && green > 210 && red > 220) {
+                        document.getElementById("color").innerHTML = "YELLOW RANGE";
+                    }
+                    // if the color is orange
+                    else if(green > 100 && green < 200) {
+                        if(red > 100) {
+                            document.getElementById("color").innerHTML = "ORANGE RANGE";
+                        }
+                    }
+                    // if the color is purple
+                    else if(blue > 70 && red > 100) {
+                        document.getElementById("color").innerHTML = "PURPLE/PINK RANGE";
+                    }
+                    // if the color is pink
+                    else if(blue > 100 && red > 215) {
+                        document.getElementById("color").innerHTML = "PINK RANGE";
+                    }
+                    // else if(red > 55 && red < 215) {
+                    //      if(blue > 70) {
+                    //          document.getElementById("color").innerHTML = "PURPLE RANGE";
+                    //      }
+                    //}
+                    // if the color is red
+                    else {
+                        document.getElementById("color").innerHTML = "RED RANGE";
+                    }
+            }
+
+
+
+            // if the color is in the blue range
+            else if(blue > red && blue > green) {
+                // if the color is purple
+                if(blue > 70 && red > 100) {
+                    document.getElementById("color").innerHTML = "PURPLE/PINK RANGE";
+                }
+                // if the color is bluegreen
+                // if the color is blue
+                else {
+                    document.getElementById("color").innerHTML = "BLUE RANGE";
+                }
+            }
+
+
+
+            // if the color is in the green range
+            else if(green > red && green > blue) {
+                // if the color is yellow
+                if(blue < 130 && green > 210 && red > 220) {
+                        document.getElementById("color").innerHTML = "YELLOW RANGE";
+                }
+                // if the color is orange
+                else if(green > 100 && green < 200) {
+                    if(red > 215 && blue < 130) {
+                        document.getElementById("color").innerHTML = "ORANGE RANGE";
+                    }
+                }
+                else {
+                    document.getElementById("color").innerHTML = "GREEN RANGE";
+                }
+            }
+
+
+
+            // if the color is unknown
+            else {
+                document.getElementById("color").innerHTML = "UNKNOWN";
+            }
+
+            /*********************** CATEGORIZING COLOR ATTEMPTS ENDS ************************/
+            var h = hslArray[0];
+            var s = hslArray[1];
+            var l = hslArray[2];
+
+
+
+
+            /******************************** COLOR HARMONIES ********************************/
+            // formulas from https://dev.to/benjaminadk/make-color-math-great-again--45of
+
+
+
+            /**************** COMPLEMENTARY ****************/
+
+            // set original
+            document.getElementById("complementary1").style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+
+            // set complement
+            document.getElementById("complementary2").style.backgroundColor = "hsl(" + ((h+180) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("COMPLEMENTARY 2- hsl(" + ((h+180) % 360) + ", " + s + "%, " + l + "%)");
+
+            /************************************************/
+
+
+
+            /**************** TRIADIC ****************/
+
+            // set original
+            document.getElementById("triadic1").style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+            
+            // set second
+            document.getElementById("triadic2").style.backgroundColor = "hsl(" + ((h+120) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("TRIADIC 2- hsl(" + ((h+120) % 360) + ", " + s + "%, " + l + "%)");
+            
+            // set third
+            document.getElementById("triadic3").style.backgroundColor = "hsl(" + ((h+240) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("TRIADIC 3- hsl(" + ((h+240) % 360) + ", " + s + "%, " + l + "%)");
+            
+            /************************************************/
+
+
+
+            /**************** TETRADIC ****************/
+            // set original
+            document.getElementById("tetradic1").style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+            
+            // set second- 60 degrees from original
+            document.getElementById("tetradic2").style.backgroundColor = "hsl(" + ((h+90) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("TETRADIC 2- hsl(" + ((h+90) % 360) + ", " + s + "%, " + l + "%)");
+
+            // set third- complement value
+            document.getElementById("tetradic3").style.backgroundColor = "hsl(" + ((h+180) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("TETRADIC 3- hsl(" + ((h+180) % 360) + ", " + s + "%, " + l + "%)");
+            
+            // set fourth- complement of second
+            document.getElementById("tetradic4").style.backgroundColor = "hsl(" + ((h+270) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("TETRADIC 4- hsl(" + ((h+270) % 360) + ", " + s + "%, " + l + "%)");
+
+            /************************************************/
+
+
+
+            /**************** ANALOGOUS ****************/
+            // set original
+            document.getElementById("analogous1").style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+
+            // set fourth- complement of second
+            document.getElementById("analogous2").style.backgroundColor = "hsl(" + ((h+30) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("ANALOGOUS 2- hsl(" + ((h+30) % 360) + ", " + s + "%, " + l + "%)");
+
+            // set fourth- complement of second
+            document.getElementById("analogous3").style.backgroundColor = "hsl(" + ((h+60) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("ANALOGOUS 3- hsl(" + ((h+60) % 360) + ", " + s + "%, " + l + "%)");
+
+            // set fourth- complement of second
+            document.getElementById("analogous4").style.backgroundColor = "hsl(" + ((h+90) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("ANALOGOUS 4- hsl(" + ((h+90) % 360) + ", " + s + "%, " + l + "%)");
+
+            // set fourth- complement of second
+            document.getElementById("analogous5").style.backgroundColor = "hsl(" + ((h+120) % 360) + ", " + s + "%, " + l + "%)";
+            console.log("ANALOGOUS 5- hsl(" + ((h+120) % 360) + ", " + s + "%, " + l + "%)");
+
+            /************************************************/
+
+
+
+            /**************** NEUTRAL ****************/
+
+            /************************************************/
+
+
+
+            /**************** SHADES ****************/
+
+            /************************************************/
+
+
+
+            /**************** TINTS ****************/
+
+            /************************************************/
+
+
+
+            /**************** TONES ****************/
+
+            /************************************************/
+
+
+
+
+            /************************ END COLOR HARMONIES ************************/
+        }
+        
+
+
+        function hide() {
+            document.getElementById("RGB").style.display = "none";
+        }
+        
+
+
+        function show() {
+            document.getElementById("RGB").style.display = "block";
+        }
+
+
+        
+        // function from https://css-tricks.com/converting-color-spaces-in-javascript/
+        function RGBToHSL(r,g,b) {
+            // Make r, g, and b fractions of 1
+            r /= 255;
+            g /= 255;
+            b /= 255;
+
+            // Find greatest and smallest channel values
+            let cmin = Math.min(r,g,b),
+                cmax = Math.max(r,g,b),
+                delta = cmax - cmin,
+                h = 0,
+                s = 0,
+                l = 0;
+
+            // Calculate hue
+            // No difference
+            if (delta == 0)
+                h = 0;
+            // Red is max
+            else if (cmax == r)
+                h = ((g - b) / delta) % 6;
+            // Green is max
+            else if (cmax == g)
+                h = (b - r) / delta + 2;
+            // Blue is max
+            else
+                h = (r - g) / delta + 4;
+
+            h = Math.round(h * 60);
+                
+            // Make negative hues positive behind 360°
+            if (h < 0)
+                h += 360;
+
+            // Calculate lightness
+            l = (cmax + cmin) / 2;
+
+            // Calculate saturation
+            s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+            
+            // Multiply l and s by 100
+            s = +(s * 100).toFixed(1);
+            l = +(l * 100).toFixed(1);
+
+            var hslArray = [h, s, l];
+
+            //return "hsl(" + h + "," + s + "%," + l + "%)";
+            return hslArray;
+            }
+    
+    </script>
+</body>
+    
+    
+    
+</html>
