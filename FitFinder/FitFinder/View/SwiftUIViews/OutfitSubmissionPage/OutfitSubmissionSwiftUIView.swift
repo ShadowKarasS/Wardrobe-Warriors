@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct OutfitSubmissionSwiftUIView: View {
+    let e = Weathers(t:19)
+    
     var body: some View {
         NavigationView {
             VStack {     
@@ -62,7 +64,7 @@ struct OutfitSubmissionSwiftUIView: View {
                 }
                 Spacer()
             }
-            .navigationBarTitle("Today's Picks for 68º")
+            .navigationBarTitle("Today's Picks for \(String(format: "%.1f",e.getWeather())) º")
 //            .navigationBarItems(trailing:
 //                                    Button("Wardrobe") {
 //                                        print("Outfits")
