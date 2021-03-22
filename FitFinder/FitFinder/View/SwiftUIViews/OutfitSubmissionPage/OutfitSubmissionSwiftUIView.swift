@@ -15,6 +15,13 @@ struct OutfitSubmissionSwiftUIView: View {
         NavigationView {
             VStack {     
                 ScrollView(.vertical, showsIndicators: false) {
+                    HStack {
+                        Text("Now the weather is \(e.getWeatherCode()) !")
+                            .font(.title2)
+                            .fontWeight(.medium)
+                        Spacer()
+                    }
+                    .padding(3)
                     
                     HStack {
                         Text("Your First Choice")
@@ -64,7 +71,8 @@ struct OutfitSubmissionSwiftUIView: View {
                 }
                 Spacer()
             }
-            .navigationBarTitle("Today's Picks for \(String(format: "%.1f",e.getWeather())) º")
+            .frame(width: 0.0)
+            .navigationBarTitle("Today's Picks for \(String(Int(e.getWeather()))) º")
 //            .navigationBarItems(trailing:
 //                                    Button("Wardrobe") {
 //                                        print("Outfits")

@@ -22,11 +22,11 @@ class LocationManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
         if status == .authorizedAlways || status == .authorizedWhenInUse{
-            print("pass")
+            print("User Allowed the privacy")
             //L.text = "test"
         }
         else if status == .denied{
-            print("Error")
+            print("Error with privacy")
         }
     }
     
@@ -37,11 +37,9 @@ class LocationManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             //print("\\nLocationManager Function Called\\n")
             let latitude:Float = Float((location.coordinate).latitude)
             let longitude:Float = Float(location.coordinate.longitude)
-            print(latitude,longitude)
+            print("Your Postion is :",latitude,longitude)
             let e = Weathers(t:0)
-            print("Test 1 : ",e.temp)
             e.GetAPI(lat:latitude,lon:longitude)
-            print("Test : ",e.getWeather())
         }
     }
 }
@@ -58,7 +56,24 @@ class Weathers:NSObject{
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-    
+    func getWeatherCode() -> String{
+        let df = "N/A \n with location service"
+        let filename = self.getDocumentsDirectory().appendingPathComponent("weatherinfo.txt")
+        do {
+         // Get the saved data
+         let savedData = try Data(contentsOf: filename)
+         // Convert the data back into a string
+         if let savedString = String(data: savedData, encoding: .utf8) {
+            
+            let s = savedString.split(separator: "\n", omittingEmptySubsequences: false)
+            return String(s[7])
+         }
+        } catch {
+         // Catch any errors
+         print("Unable to read the file")
+        }
+        return df
+    }
     func getWeather()-> Float{
         let o = 0
         let filename = self.getDocumentsDirectory().appendingPathComponent("weatherinfo.txt")
@@ -72,7 +87,7 @@ class Weathers:NSObject{
             let s = savedString.split(separator: "\n", omittingEmptySubsequences: false)
             guard let e = Float(String(s[0])) else { return 0 }
             //print(type(of: e))
-            return Float(e)
+            return Float(e).rounded()
          }
         } catch {
          // Catch any errors
@@ -166,7 +181,10 @@ class Weathers:NSObject{
 //                do {
 //                    let google = try decoder2.decode(Google.self, from: data!)
 //                    print("\nGoogle Result:\n")
+//                    let s = google.results?.prefix(1)
+//                    //let e = Array(arrayLiteral: s)
 //                    print(google.results?.prefix(1) as Any)
+//
 //                }
 //                catch{
 //                    print("Error in JSON parsing")
