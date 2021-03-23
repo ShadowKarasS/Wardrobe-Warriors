@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct WardrobeNavigationSwiftUIView: View {
+    let locationmanager = LocationManager()
     @FetchRequest(entity: ArticleOfClothing.entity(), sortDescriptors: []) var articlesOfClothing: FetchedResults<ArticleOfClothing>
     
     var body: some View {
