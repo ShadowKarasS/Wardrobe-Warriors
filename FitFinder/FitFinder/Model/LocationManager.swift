@@ -19,13 +19,24 @@ class LocationManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         }
-    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
         if status == .authorizedAlways || status == .authorizedWhenInUse{
             print("User Allowed the privacy")
             //L.text = "test"
         }
         else if status == .denied{
+            let filename = self.getDocumentsDirectory().appendingPathComponent("weatherinfo.txt")
+            let reset:String = ""
+            do{
+            try reset.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+            }
+            catch{
+                print("Error")
+                }
             print("Error with privacy")
         }
     }
@@ -57,7 +68,7 @@ class Weathers:NSObject{
         return paths[0]
     }
     func getWeatherCode() -> String{
-        let df = "N/A \n with location service"
+        let df = "N/A \n with location service is not allowed"
         let filename = self.getDocumentsDirectory().appendingPathComponent("weatherinfo.txt")
         do {
          // Get the saved data
@@ -66,7 +77,11 @@ class Weathers:NSObject{
          if let savedString = String(data: savedData, encoding: .utf8) {
             
             let s = savedString.split(separator: "\n", omittingEmptySubsequences: false)
-            return String(s[7])
+            print(s.count)
+            if s.count > 1{
+                return String(s[7])
+            }
+            return df
          }
         } catch {
          // Catch any errors
@@ -120,7 +135,7 @@ class Weathers:NSObject{
                 let decoder = JSONDecoder()
                 //let str = "Super long string here"
                 let filename = self.getDocumentsDirectory().appendingPathComponent("weatherinfo.txt")
-                //print(filename)
+                print(filename)
                 do {
                     let weatherFeed = try decoder.decode(WeatherFeed.self, from: data!)
                     //print("\nClimacell Result:\n")
