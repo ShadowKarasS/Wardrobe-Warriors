@@ -154,6 +154,7 @@ struct ClothingSubmissionSwiftUIView: View {
             newArticleOfClothing.appropriateTemperature = fahrenheit
             newArticleOfClothing.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
             newArticleOfClothing.image = selectedImage
+            newArticleOfClothing.picked = 0
             do {
                 try viewContext.save()
             } catch {

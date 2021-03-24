@@ -195,7 +195,7 @@ struct WardrobeNavigationSwiftUIView: View {
                 }
                 Spacer()
             }
-            .navigationBarTitle(Text(""), displayMode: .inline)
+            .onAppear { clearMatchedOutfits() }
             .navigationBarItems(leading:
                                     NavigationLink(destination: OutfitSubmissionSwiftUIView()) {
                                         Text("Today's Picks")
@@ -224,6 +224,17 @@ struct WardrobeNavigationSwiftUIView: View {
             
         } catch {
             print("Delete failed")
+        }
+    }
+    
+    func clearMatchedOutfits() {
+        for articleOfClothing in articlesOfClothing {
+            articleOfClothing.picked = 0
+            do {
+                try articleOfClothing.managedObjectContext?.save()
+            } catch {
+                print(error)
+            }
         }
     }
 }
