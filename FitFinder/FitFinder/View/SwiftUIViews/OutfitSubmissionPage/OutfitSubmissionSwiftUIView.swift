@@ -9,7 +9,9 @@ import SwiftUI
 import CoreData
 
 struct OutfitSubmissionSwiftUIView: View {
-    
+    @State private var matchedTops = [ArticleOfClothing]()
+    @State private var matchedBottoms = [ArticleOfClothing]()
+
     @FetchRequest(entity: ArticleOfClothing.entity(), sortDescriptors: []) var articlesOfClothing: FetchedResults<ArticleOfClothing>
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -17,21 +19,16 @@ struct OutfitSubmissionSwiftUIView: View {
     @State private var selectedFormality: Formality = .casual
     @State private var state: MatchingState = .unmatched
     
-    
     var body: some View {
-        NavigationView {
-            VStack {
+        VStack {
+            if state == .matched {
                 ScrollView(.vertical, showsIndicators: false) {
-                    if state == .matched {
-                        MatchedOutfitSwiftUIView(numberPicked: 1)
-                        MatchedOutfitSwiftUIView(numberPicked: 2)
-                        MatchedOutfitSwiftUIView(numberPicked: 3)
-                        MatchedOutfitSwiftUIView(numberPicked: 4)
-                        MatchedOutfitSwiftUIView(numberPicked: 5)
+                    ForEach(1..<matchedTops.count) { index in
+                        MatchedOutfitSwiftUIView(numberPicked: index, matchedTops[index], matchedBottoms[index]) // matchedTops[0], matchedBottoms[0]
                     }
                 }
-                Spacer()
             }
+            Spacer()
         }
         .navigationBarTitle("Today's Picks for 68º")
         .onAppear {
@@ -53,53 +50,72 @@ struct OutfitSubmissionSwiftUIView: View {
     }
     
     func createOutfits() {
-        
         var matchedOutfits: Int16 = 1
         var consideredTops = [ArticleOfClothing]()
         var consideredBottoms =  [ArticleOfClothing]()
         var topCount = 0
         var bottomCount = 0
         
-        // TODO: implement weather pulling
-        for articleOfClothing in articlesOfClothing {
-            // check formality
-            if articleOfClothing.formality == selectedFormality {
-                if articleOfClothing.typeOfClothing == .shirt || articleOfClothing.typeOfClothing == .longSleeveShirt {
-                    consideredTops.insert(articleOfClothing, at: topCount)
-                    topCount += 1
-                } else if articleOfClothing.typeOfClothing == .pants ||
-                            articleOfClothing.typeOfClothing == .shorts ||
-                            articleOfClothing.typeOfClothing == .skirt {
-                    consideredBottoms.insert(articleOfClothing, at: bottomCount)
-                    bottomCount += 1
+        if checkNewDay() {
+            // TODO: implement weather pulling
+            for articleOfClothing in articlesOfClothing {
+                // set picked back to zero and save
+                articleOfClothing.picked = 0
+                do {
+                    try articleOfClothing.managedObjectContext?.save()
+                } catch {
+                    print(error)
+                }
+                
+                // check formality
+                if articleOfClothing.formality == selectedFormality {
+                    if articleOfClothing.typeOfClothing == .shirt || articleOfClothing.typeOfClothing == .longSleeveShirt {
+                        consideredTops.insert(articleOfClothing, at: topCount)
+                        topCount += 1
+                    } else if articleOfClothing.typeOfClothing == .pants ||
+                                articleOfClothing.typeOfClothing == .shorts ||
+                                articleOfClothing.typeOfClothing == .skirt {
+                        consideredBottoms.insert(articleOfClothing, at: bottomCount)
+                        bottomCount += 1
+                    }
                 }
             }
-        }
-        
-        // TODO: implement color matching
-        for i in 0..<consideredTops.count {
-            consideredTops[i].picked = matchedOutfits
-            consideredBottoms[i].picked = matchedOutfits
-            matchedOutfits += 1
             
-            if matchedOutfits == 5  {
-                break
+            // TODO: implement color matching
+            for i in 0..<consideredTops.count {
+                consideredTops[i].picked = matchedOutfits
+                matchedTops.insert(consideredTops[i], at: Int(matchedOutfits - 1))
+                consideredBottoms[i].picked = matchedOutfits
+                matchedBottoms.insert(consideredBottoms[i], at: Int(matchedOutfits - 1))
+                matchedOutfits += 1
+                
+                if matchedOutfits == 5  {
+                    break
+                }
             }
-        }
-        
-        for top in consideredTops {
-            do {
-                try top.managedObjectContext?.save()
-            } catch {
-                print(error)
+            
+            for top in matchedTops {
+                do {
+                    try top.managedObjectContext?.save()
+                } catch {
+                    print(error)
+                }
             }
-        }
-        
-        for bottom in consideredBottoms {
-            do {
-                try bottom.managedObjectContext?.save()
-            } catch {
-                print(error)
+            
+            for bottom in matchedBottoms {
+                do {
+                    try bottom.managedObjectContext?.save()
+                } catch {
+                    print(error)
+                }
+            }
+        } else {
+            for articleOfClothing in articlesOfClothing {
+                if articleOfClothing.typeOfClothing == .shirt || articleOfClothing.typeOfClothing == .longSleeveShirt {
+                    matchedTops.insert(articleOfClothing, at: Int(articleOfClothing.picked))
+                } else {
+                    matchedBottoms.insert(articleOfClothing, at: Int(articleOfClothing.picked))
+                }
             }
         }
         
@@ -167,6 +183,21 @@ struct OutfitSubmissionSwiftUIView: View {
     
     func matchArticlesOfClothing() {
         
+    }
+    
+    func checkNewDay() -> Bool {
+        let defaults = UserDefaults.standard
+        let savedDate = defaults.object(forKey: "LastRun") as? Date
+        let todaysDate = Date()
+        if savedDate == nil {
+            defaults.setValue(Date(), forKey: "LastRun")
+            return true
+        } else if savedDate == todaysDate {
+            return true
+        } else {
+            defaults.setValue(Date(), forKey: "LastRun")
+            return false
+        }
     }
 
 }

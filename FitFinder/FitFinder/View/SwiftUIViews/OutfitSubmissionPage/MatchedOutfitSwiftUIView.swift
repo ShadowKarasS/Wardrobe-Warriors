@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MatchedOutfitSwiftUIView: View {
+    var matchedTop: ArticleOfClothing
+    var matchedBottom: ArticleOfClothing
     var numberPicked = 0
     var headlineText: String {
         switch numberPicked {
@@ -25,11 +27,11 @@ struct MatchedOutfitSwiftUIView: View {
             return ""
         }
     }
-    
-    @FetchRequest(entity: ArticleOfClothing.entity(), sortDescriptors: []) var articlesOfClothing: FetchedResults<ArticleOfClothing>
-    
-    init(numberPicked: Int) {
+
+    init(numberPicked: Int, _ matchedTop: ArticleOfClothing,_ matchedBottom: ArticleOfClothing) {
         self.numberPicked = numberPicked
+        self.matchedTop = matchedTop
+        self.matchedBottom = matchedBottom
     }
     
     var body: some View {
@@ -41,38 +43,28 @@ struct MatchedOutfitSwiftUIView: View {
         .padding(4)
 
         VStack {
-            ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
-                if articleOfClothing.typeOfClothing == .shirt ||
-                    articleOfClothing.typeOfClothing == .longSleeveShirt &&
-                    articleOfClothing.picked == numberPicked {
-                    if let image = articleOfClothing.image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .frame(width: 265.0, height: 265.0)
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Rectangle())
-                            .cornerRadius(25)
-                            .shadow(radius: 5)
-                    }
-                } else if articleOfClothing.typeOfClothing == .pants ||
-                            articleOfClothing.typeOfClothing == .shorts ||
-                            articleOfClothing.typeOfClothing == .skirt &&
-                            articleOfClothing.picked == numberPicked {
-                    if let image = articleOfClothing.image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .frame(width: 265.0, height: 265.0)
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Rectangle())
-                            .cornerRadius(25)
-                            .shadow(radius: 5)
-                    }
-                }
+            if let image = matchedTop.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 265.0, height: 265.0)
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Rectangle())
+                    .cornerRadius(25)
+                    .shadow(radius: 5)
+            }
+            if let image = matchedBottom.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 265.0, height: 265.0)
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Rectangle())
+                    .cornerRadius(25)
+                    .shadow(radius: 5)
             }
             
         }
         .frame(width: 300.0, height: 560.0)
-        .background(Color.yellow)
+        .background(Color(.sRGB, red: Double(matchedTop.red) / 255.0, green: Double(matchedTop.green) / 255.0, blue: Double(matchedTop.blue) / 255.0, opacity: 1.0))
         .clipShape(Rectangle())
         .cornerRadius(25)
         .padding(4)
@@ -80,8 +72,8 @@ struct MatchedOutfitSwiftUIView: View {
     }
 }
 
-struct MatchedOutfitSwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchedOutfitSwiftUIView(numberPicked: 1)
-    }
-}
+//struct MatchedOutfitSwiftUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MatchedOutfitSwiftUIView(numberPicked: 1)
+//    }
+//}
