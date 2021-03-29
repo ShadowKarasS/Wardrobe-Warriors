@@ -110,11 +110,16 @@ struct OutfitSubmissionSwiftUIView: View {
                 }
             }
         } else {
-            for articleOfClothing in articlesOfClothing {
+            let sortedArticlesOfClothing = articlesOfClothing.sorted { $0.picked < $1.picked
+            }
+            for articleOfClothing in sortedArticlesOfClothing {
+                if articleOfClothing.picked == 0 {
+                    continue
+                }
                 if articleOfClothing.typeOfClothing == .shirt || articleOfClothing.typeOfClothing == .longSleeveShirt {
-                    matchedTops.insert(articleOfClothing, at: Int(articleOfClothing.picked))
+                    matchedTops.insert(articleOfClothing, at: Int(articleOfClothing.picked - 1))
                 } else {
-                    matchedBottoms.insert(articleOfClothing, at: Int(articleOfClothing.picked))
+                    matchedBottoms.insert(articleOfClothing, at: Int(articleOfClothing.picked - 1))
                 }
             }
         }
