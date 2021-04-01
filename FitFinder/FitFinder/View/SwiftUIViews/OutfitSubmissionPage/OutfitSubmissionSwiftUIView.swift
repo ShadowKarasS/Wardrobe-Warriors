@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct OutfitSubmissionSwiftUIView: View {
+    let e = Weathers(t:19)
     @State private var matchedTops = [ArticleOfClothing]()
     @State private var matchedBottoms = [ArticleOfClothing]()
 
@@ -23,6 +24,13 @@ struct OutfitSubmissionSwiftUIView: View {
         VStack {
             if state == .matched {
                 ScrollView(.vertical, showsIndicators: false) {
+                    HStack {
+                        Text("Now the weather is \(e.getWeatherCode()) !")
+                            .font(.title2)
+                            .fontWeight(.medium)
+                        Spacer()
+                    }
+                    .padding(3)
                     ForEach(1..<matchedTops.count) { index in
                         MatchedOutfitSwiftUIView(numberPicked: index, matchedTops[index], matchedBottoms[index]) // matchedTops[0], matchedBottoms[0]
                     }
@@ -80,6 +88,8 @@ struct OutfitSubmissionSwiftUIView: View {
                     }
                 }
             }
+            .frame(width: 0.0)
+            .navigationBarTitle("Today's Picks for \(String(Int(e.getWeather()))) º")
             
             // TODO: implement color matching
             for i in 0..<consideredTops.count {
