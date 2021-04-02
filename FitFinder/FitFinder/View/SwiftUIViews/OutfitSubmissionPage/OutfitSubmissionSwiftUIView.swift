@@ -25,7 +25,7 @@ struct OutfitSubmissionSwiftUIView: View {
             if state == .matched {
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
-                        Text("Now the weather is \(e.getWeatherCode()) !")
+                        Text("Now the weather is \(e.getWeatherCode())!")
                             .font(.title2)
                             .fontWeight(.medium)
                         Spacer()
@@ -38,7 +38,8 @@ struct OutfitSubmissionSwiftUIView: View {
             }
             Spacer()
         }
-        .navigationBarTitle("Today's Picks for 68º")
+        .frame(width: 0.0)
+        .navigationBarTitle("Today's Picks for \(String(Int(e.getWeather())))º")
         .onAppear {
             showingAlert = true
         }
@@ -88,8 +89,6 @@ struct OutfitSubmissionSwiftUIView: View {
                     }
                 }
             }
-            .frame(width: 0.0)
-            .navigationBarTitle("Today's Picks for \(String(Int(e.getWeather()))) º")
             
             // TODO: implement color matching
             for i in 0..<consideredTops.count {
@@ -120,8 +119,7 @@ struct OutfitSubmissionSwiftUIView: View {
                 }
             }
         } else {
-            let sortedArticlesOfClothing = articlesOfClothing.sorted { $0.picked < $1.picked
-            }
+            let sortedArticlesOfClothing = articlesOfClothing.sorted { $0.picked < $1.picked }
             for articleOfClothing in sortedArticlesOfClothing {
                 if articleOfClothing.picked == 0 {
                     continue
