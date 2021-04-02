@@ -15,6 +15,10 @@
 		8C80280625F8640D00DB16C7 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80280525F8640D00DB16C7 /* ImagePickerView.swift */; };
 		8C80280E25F8647F00DB16C7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80280D25F8647F00DB16C7 /* Coordinator.swift */; };
 		8C80286825F8968C00DB16C7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80286725F8968C00DB16C7 /* PersistenceManager.swift */; };
+		8CC0F52F261787DA00FE876C /* WeatherFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0F52E261787DA00FE876C /* WeatherFeed.swift */; };
+		8CC0F534261787E200FE876C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0F533261787E200FE876C /* LocationManager.swift */; };
+		8CCD327026073402001F5B64 /* MatchedOutfitSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD326F26073402001F5B64 /* MatchedOutfitSwiftUIView.swift */; };
+		8CD4A8DD260AC63E00E7F518 /* MatchingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD4A8DC260AC63E00E7F518 /* MatchingState.swift */; };
 		8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */; };
 		8CE4D8FA25DB46F1005BF8FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE4D8F925DB46F1005BF8FA /* ContentView.swift */; };
 		8CE4D8FC25DB46F3005BF8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE4D8FB25DB46F3005BF8FA /* Assets.xcassets */; };
@@ -64,6 +68,10 @@
 		8C80280525F8640D00DB16C7 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		8C80280D25F8647F00DB16C7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C80286725F8968C00DB16C7 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		8CC0F52E261787DA00FE876C /* WeatherFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFeed.swift; sourceTree = "<group>"; };
+		8CC0F533261787E200FE876C /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		8CCD326F26073402001F5B64 /* MatchedOutfitSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedOutfitSwiftUIView.swift; sourceTree = "<group>"; };
+		8CD4A8DC260AC63E00E7F518 /* MatchingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingState.swift; sourceTree = "<group>"; };
 		8CE4D8F425DB46F1005BF8FA /* FitFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE4D8F725DB46F1005BF8FA /* FitFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFinderApp.swift; sourceTree = "<group>"; };
 		8CE4D8F925DB46F1005BF8FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				8CE4D92525DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift */,
+				8CCD326F26073402001F5B64 /* MatchedOutfitSwiftUIView.swift */,
 			);
 			path = OutfitSubmissionPage;
 			sourceTree = "<group>";
@@ -151,6 +160,9 @@
 				8C05E41525E5CA730020AF41 /* Extensions.swift */,
 				8CE60BCD25EF2DA100D3E4BD /* TypeOfClothing.swift */,
 				8C80286725F8968C00DB16C7 /* PersistenceManager.swift */,
+				8CD4A8DC260AC63E00E7F518 /* MatchingState.swift */,
+				8CC0F52E261787DA00FE876C /* WeatherFeed.swift */,
+				8CC0F533261787E200FE876C /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -410,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CCD327026073402001F5B64 /* MatchedOutfitSwiftUIView.swift in Sources */,
 				8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */,
 				8C80280E25F8647F00DB16C7 /* Coordinator.swift in Sources */,
 				8CE60BCE25EF2DA100D3E4BD /* TypeOfClothing.swift in Sources */,
@@ -417,13 +430,16 @@
 				8C80280625F8640D00DB16C7 /* ImagePickerView.swift in Sources */,
 				8CE4D94A25DB4C68005BF8FA /* ClothingSubmissionSwiftUIView.swift in Sources */,
 				8C80286825F8968C00DB16C7 /* PersistenceManager.swift in Sources */,
+				8CC0F52F261787DA00FE876C /* WeatherFeed.swift in Sources */,
 				8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */,
 				8C8027D625F7030C00DB16C7 /* FitFinderModel.xcdatamodeld in Sources */,
 				8C54390525FDD55E00AC55CB /* ArticleOfClothing+CoreDataClass.swift in Sources */,
 				8C54390625FDD55E00AC55CB /* ArticleOfClothing+CoreDataProperties.swift in Sources */,
 				8CE60BC625EF2D8000D3E4BD /* Formality.swift in Sources */,
 				8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */,
+				8CD4A8DD260AC63E00E7F518 /* MatchingState.swift in Sources */,
 				8CE4D94525DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift in Sources */,
+				8CC0F534261787E200FE876C /* LocationManager.swift in Sources */,
 				8CE4D92625DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
