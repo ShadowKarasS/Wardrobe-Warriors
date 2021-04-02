@@ -62,7 +62,7 @@ class LocationManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             
             let e = Weathers(t:0)
             e.GetAPInow(lat:latitude,lon:longitude)
-            e.PredictWeather(hours:24)
+            //e.PredictWeather(hours:24)
         }
     }
 }
