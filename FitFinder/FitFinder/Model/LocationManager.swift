@@ -125,6 +125,9 @@ class Weathers:NSObject{
     func convertc2f(temp:Float) -> Int{
         return (Int((temp)*9/5)+32)
     }
+    func convertf2c(temp:Float) -> Int{
+        return (Int((temp)*5/9)-32)
+    }
     func convertHours(H:Int)->String{
         if H == 0{
             return "Now"
@@ -323,7 +326,7 @@ class Weathers:NSObject{
          if let savedString = String(data: savedData, encoding: .utf8) {
             
             let s = savedString.split(separator: "\n", omittingEmptySubsequences: false)
-            print("\n\n\tCheck\n",s,"\n\n\n\n")
+            //print("\n\n\tCheck\n",s,"\n\n\n\n")
             let actemp:Float = self.compareTemp(tem: Float(s[2])!, feels: Float(s[4])!)
             guard let e = Float(String(s[2])) else { return Float(o) }
             //print(type(of: e))
@@ -339,7 +342,7 @@ class Weathers:NSObject{
     func GetAPInow(lat:Float,lon:Float){
 //        print("GetAPI")
         //Hit the API endpoint
-        let urlString =  "https://api.climacell.co/v3/weather/realtime?lat=\(lat)&lon=\(lon)&unit_system=si&fields=temp&fields=feels_like&fields=humidity&fields=wind_speed&fields=weather_code&apikey=qWlMnQ8lMP3g0yTyFUBDpPORAgofvaYv"
+        let urlString =  "https://api.climacell.co/v3/weather/realtime?lat=\(lat)&lon=\(lon)&unit_system=us&fields=temp&fields=feels_like&fields=humidity&fields=wind_speed&fields=weather_code&apikey=qWlMnQ8lMP3g0yTyFUBDpPORAgofvaYv"
         
         //print(urlString)
 
