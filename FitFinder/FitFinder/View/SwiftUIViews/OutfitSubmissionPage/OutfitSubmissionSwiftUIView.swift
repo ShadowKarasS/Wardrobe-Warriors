@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct OutfitSubmissionSwiftUIView: View {
-    let e = Weathers(t:19)
+    let e = Weathers(t:-99)
     @State private var matchedTops = [ArticleOfClothing]()
     @State private var matchedBottoms = [ArticleOfClothing]()
 
