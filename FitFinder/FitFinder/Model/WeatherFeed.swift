@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WeatherFeed:ObservableObject, Codable {
     enum CodingKeys: CodingKey {
@@ -112,3 +113,20 @@ class subGoogle: ObservableObject, Codable{
         try container.encode(formatted_address, forKey: .formatted_address)
     }
 }
+
+class PreWeather: ObservableObject, Codable{
+    enum CodingKeys: CodingKey {
+        case results
+    }
+    @Published var results:[WeatherFeed]?
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        results = try container.decode([WeatherFeed].self, forKey: .results)
+    }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(results, forKey: .results)
+    }
+}
+
+
