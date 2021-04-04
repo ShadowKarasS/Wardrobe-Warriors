@@ -114,19 +114,3 @@ class subGoogle: ObservableObject, Codable{
     }
 }
 
-class PreWeather: ObservableObject, Codable{
-    enum CodingKeys: CodingKey {
-        case results
-    }
-    @Published var results:[WeatherFeed]?
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        results = try container.decode([WeatherFeed].self, forKey: .results)
-    }
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(results, forKey: .results)
-    }
-}
-
-

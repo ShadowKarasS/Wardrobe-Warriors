@@ -60,9 +60,10 @@ class LocationManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             
             //print("Your Postion is :",latitude,longitude)
             
-            let e = Weathers(t:0)
+            let e = Weathers(t:-99)
             e.GetAPInow(lat:latitude,lon:longitude)
-            //e.PredictWeather(hours:24)
+            e.PredictWeather(hours:24)
+            
         }
     }
 }
@@ -126,7 +127,7 @@ class Weathers:NSObject{
         return (Int((temp)*9/5)+32)
     }
     func convertf2c(temp:Float) -> Int{
-        return (Int((temp)*5/9)-32)
+        return (Int((temp-32)*5/9))
     }
     func convertHours(H:Int)->String{
         if H == 0{
@@ -145,13 +146,13 @@ class Weathers:NSObject{
         let loc:String = getLoc()
         let s = loc.split(separator: "|", omittingEmptySubsequences: false)
     
-        let urlString = "https://api.climacell.co/v3/weather/forecast/hourly?lat=\(s[0])&lon=\(s[1])&unit_system=si&start_time=now&end_time=\(datetime2)&fields=temp&fields=feels_like&fields=wind_speed&fields=humidity&fields=weather_code&apikey=qWlMnQ8lMP3g0yTyFUBDpPORAgofvaYv"
+        let urlString = "https://api.climacell.co/v3/weather/forecast/hourly?lat=\(s[0])&lon=\(s[1])&unit_system=us&start_time=now&end_time=\(datetime2)&fields=temp&fields=feels_like&fields=wind_speed&fields=humidity&fields=weather_code&apikey=qWlMnQ8lMP3g0yTyFUBDpPORAgofvaYv"
         
         //print(urlString)
         
 //        let urlString = "https://data.climacell.co/v4/timelines?location=\(s[0]),\(s[1]),&fields=temperature&fields=humidity&fields=weatherCode&timesteps=1h&units=metric&apikey=uLQZKKLVo0TYOdqLo9X05SzeAreR6KaA"
 //
-//        print(urlString)
+        print(urlString)
         
         let url = URL(string: urlString)
 
@@ -172,82 +173,69 @@ class Weathers:NSObject{
                     let preweather = try decoder3.decode([WeatherFeed].self, from: data!)
                     let s:[WeatherFeed] = preweather //Hold info of each hours in each Array
                     
+                    //DB Weather
+                    let dbw:DBweather = DBweather()
+                    var dbweathers:[Weather] = []
+                    dbw.readman(Statement: "DELETE FROM weather WHERE 1")
+                    //DB Weather
+                    
                     var counter:Int = 0 //counter for hours
                     var acttemp:Float = 0 //actually temperature
                     
-                    var tempMax:Float = -999 //Hold Max temperature
-                    var thMax:String = "-" //Hold Time of Max Temp (UTC) with ISO format
-                    var tcounth:Int = 0 //hold number of hour from now that is Max Temperature
                     
-                    var tempMin:Float = 1000 //Hold Min Temperature
-                    var thMin:String = "-" //Hold Time of Min Temp (UTC) with ISO format
-                    var tcountl:Int = 0
-                    var avg_temp:Float = 0
-                    
-                    var humMax:Float = -99
-                    var hhumMax:String = "-"
-                    var hcount:Int = 0
-                    var avg_humid:Float = 0
-                    
-                    print("\nPredict Weather in ",hours," Hours Including Now")
+                    print("\nPredict Weather (\(self.getGeoLoc()) ) in ",hours," Hours Including Now")
                     
                     for x in s {
                         
-                        //print(x.weather_code?.value)
+                        //DB Insert
+                        //print("Insert ",(x.temp?.value)!)
+                        dbw.insert(id:(counter+1),temp:Float((x.temp?.value)!),feels:Float((x.feels_like?.value)!),humid:Float((x.humidity?.value)!), wind:Float((x.wind_speed?.value)!),code:((x.weather_code?.value)!), time:(x.observation_time?.value)!)
+                        //DB Insert
+                        
                         //compare feels and temp
-                        acttemp = self.compareTemp(tem:(x.temp?.value)!, feels:(x.feels_like?.value)!)
+                        //acttemp = self.compareTemp(tem:(x.temp?.value)!, feels:(x.feels_like?.value)!)
                             
-                        avg_temp = avg_temp + acttemp
-                        avg_humid = avg_humid + (x.humidity?.value)!
-                        
-                        //Find Max Temp
-                        if tempMax < acttemp{
-                            tempMax = acttemp
-                            thMax = (x.observation_time?.value)!
-                            tcounth = counter
-                        }
-                        
-                        //Find Min Temp
-                        if tempMin > acttemp{
-                            tempMin = acttemp
-                            thMin = (x.observation_time?.value)!
-                            tcountl = counter
-                        }
-                        
-                        //Find Max Humidity
-                        if humMax < (x.humidity?.value)! {
-                            humMax = (x.humidity?.value)!
-                            hhumMax = (x.observation_time?.value)!
-                            hcount = counter
-                        }
                         counter = counter + 1
-                        //print(x.temp?.value)
                     }
-                    avg_temp = avg_temp/Float(counter)
-                    avg_humid = avg_humid/Float(counter)
-                    print("\nTemperature Max = ",tempMax.rounded()," ",thMax," in next ",tcounth," Hours ")
-                    print("Avg Temp = ",avg_temp.rounded())
                     
-                    let t:String = String(tempMax.rounded()) + "|"+self.convertHours(H:tcounth)+"|"+String(format:"%.1f",tempMin)+"|"+String(self.convertHours(H: tcountl))+"|"+String(avg_temp.rounded())
                     
-                    print("\nHumMax = ",humMax.rounded()," ",hhumMax," in next ",hcount," Hours ")
-                    print("Avg Humid = ",avg_humid.rounded())
-                    let hu:String = String(humMax.rounded())+"|"+self.convertHours(H:hcount)+"|"+String(avg_humid.rounded())
-                    
-                    let temTitle:String = "<TEMP> Max|Time|Min|Time|Avg\n"
-                    let humTitle:String = "<HUMID> Max|Time|Avg\n"
-                    let summary:String = temTitle+t+"\n"+humTitle+hu
-                    
-                    print("\n Date Store:\n",summary,"\n")
-                    
-                    if self.checkRainChance(humid:humMax) == true{
-                        print("High risk to become raining")
+                    dbweathers = dbw.readall()
+                    for o in dbweathers{
+                        print(o.code)
                     }
-                    else{
-                        print("Low risk to become raining")
+                    
+                    //get avg temp
+                    let AverageTemp:Float = dbw.queryfloat(queryStatementString: "SELECT AVG(temp) from weather")
+                    print("Average Temp = ",AverageTemp)
+                    
+                    //get max temp
+                    dbweathers = dbw.readman(Statement: "SELECT *From weather where temp = (Select MAX(temp) From weather)")
+                    for y in dbweathers{
+                        print("MAX Temp = ",y.temp," at ",y.time," in next \(y.id-1) hour")
                     }
-                    //print(s[0].temp?.value)
-                    //print(weatherFeed.temp?.value as Any,weatherFeed.temp?.units as Any)
+                    
+                    //get min temp
+                    dbweathers = dbw.readman(Statement:"SELECT * FROM weather where temp = (Select MIN(temp) From weather)")
+                    
+                    for y in dbweathers{
+                        print("MIN Temp = ",y.temp," at ",y.time," in next \(y.id-1) hour")
+                    }
+                    
+                    //get distinct weather type with most frequency to low
+                    //dbweathers = dbw.readman(Statement:"select * from weather group by code order by count(code) DESC")
+                        
+                    print("\nOverall Weather: ")
+//                        for i in dbweathers{
+//                            print(i.code)
+//                        }
+                    var qcount:[Qcount] = []
+                    qcount = dbw.querycount(queryStatementString:"select count(id), code from weather group by code order by count(code) DESC")
+//                    //qcount = dbw.querycount(queryStatementString: "Select count(id), code from weather group by code order by count(code) DESC")
+//                    qcount = dbw.querycount(queryStatementString: "Select count(code),code from weather group by code")
+//
+                    for i in qcount{
+                        print(i.result,i.count)
+                    }
 
                 }
                 catch{
@@ -330,6 +318,7 @@ class Weathers:NSObject{
             let actemp:Float = self.compareTemp(tem: Float(s[2])!, feels: Float(s[4])!)
             guard let e = Float(String(s[2])) else { return Float(o) }
             //print(type(of: e))
+            //print(Float(actemp).rounded())
             return Float(actemp).rounded()
          }
         } catch {
@@ -450,49 +439,3 @@ class Weathers:NSObject{
         dataTask2.resume()
     }
 }
-
-extension Weathers {
-    
-    enum Icon: String, Codable {
-        
-        case clearDay = "clear-day"
-        case clearNight = "clear-night"
-        case rain = "rain"
-        case snow = "snow"
-        case sleet = "sleet"
-        case wind = "wind"
-        case fog = "fog"
-        case cloudy = "cloudy"
-        case partyCloudyDay = "partly-cloudy-day"
-        case partyCloudyNight = "partly-cloudy-night"
-        
-        var image: Image {
-            switch self {
-            case .clearDay:
-                return Image(systemName: "sun.max.fill")
-            case .clearNight:
-                return Image(systemName: "moon.stars.fill")
-            case .rain:
-                return Image(systemName: "cloud.rain.fill")
-            case .snow:
-                return Image(systemName: "snow")
-            case .sleet:
-                return Image(systemName: "cloud.sleet.fill")
-            case .wind:
-                return Image(systemName: "wind")
-            case .fog:
-                return Image(systemName: "cloud.fog.fill")
-            case .cloudy:
-                return Image(systemName: "cloud.fill")
-            case .partyCloudyDay:
-                return Image(systemName: "cloud.sun.fill")
-            case .partyCloudyNight:
-                return Image(systemName: "cloud.moon.fill")
-            }
-        }
-                
-    }
-    
-}
-
-
