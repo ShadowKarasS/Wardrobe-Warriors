@@ -13,15 +13,15 @@ struct MatchedOutfitSwiftUIView: View {
     var numberPicked = 0
     var headlineText: String {
         switch numberPicked {
-        case 1:
+        case 0:
             return "Your First Choice"
-        case 2:
+        case 1:
             return "Your Second Choice"
-        case 3:
+        case 2:
             return "Your Third Choice"
-        case 4:
+        case 3:
             return "Your Fourth Choice"
-        case 5:
+        case 4:
             return "Your Fifth Choice"
         default:
             return ""
