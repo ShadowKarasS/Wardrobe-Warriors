@@ -67,7 +67,7 @@ struct OutfitSubmissionSwiftUIView: View {
         var topCount = 0
         var bottomCount = 0
         
-        if !checkNewDay() {
+        if checkNewDay() {
             for i in 0..<articlesOfClothing.count {
                 // set picked back to zero and save
                 articlesOfClothing[i].picked = 0
@@ -84,8 +84,8 @@ struct OutfitSubmissionSwiftUIView: View {
                             Int(e.getWeather()) < 50 &&
                             articlesOfClothing[i].appropriateTemperature == .cold {
                     consideredClothes.insert(articlesOfClothing[i], at: i)
-                } else if Int(e.getWeather()) >= 10 &&
-                            Int(e.getWeather()) < 16 &&
+                } else if Int(e.getWeather()) >= 50 &&
+                            Int(e.getWeather()) < 65 &&
                             articlesOfClothing[i].appropriateTemperature == .mild {
                     consideredClothes.insert(articlesOfClothing[i], at: i)
                 } else if Int(e.getWeather()) >= 65 &&
