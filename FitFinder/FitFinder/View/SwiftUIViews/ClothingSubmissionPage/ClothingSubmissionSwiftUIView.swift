@@ -16,19 +16,24 @@ struct ClothingSubmissionSwiftUIView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     // MARK: Type of Clothing Variables
-    var typesOfClothing = [TypeOfClothing.shirt.rawValue, TypeOfClothing.longSleeveShirt.rawValue, TypeOfClothing.pants.rawValue, TypeOfClothing.shorts.rawValue, TypeOfClothing.skirt.rawValue]
+    var typesOfClothing = [TypeOfClothing.shirt, TypeOfClothing.longSleeveShirt, TypeOfClothing.pants, TypeOfClothing.shorts, TypeOfClothing.skirt]
     @State private var selectedTypeOfClothing = 0
     
     // MARK: Formality Variables
     @State private var pickedFormality = 0
-    var typeOfFormality = [Formality.casual.rawValue, Formality.formal.rawValue]
+    var typeOfFormality = [Formality.casual, Formality.formal]
     
-    @State private var fahrenheit: Double = 0
+//    @State private var fahrenheit: Double = 0
     
     // MARK: Camera Variables
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
+    
+    @State var selectedTemperature: Int = 0
+
+    private let appropriateTemperatures: [String] = [Temperature.veryCold.emoji, Temperature.cold.emoji, Temperature.mild.emoji, Temperature.hot.emoji, Temperature.veryHot.emoji]
+    
     
     init() {
         existingArticleOfClothing = nil
@@ -48,8 +53,13 @@ struct ClothingSubmissionSwiftUIView: View {
                     Spacer()
                 }
                 Picker(selection: $pickedFormality, label: Text("Choose the Formality")) {
-                    ForEach(0..<typeOfFormality.count) { index in
-                        Text(self.typeOfFormality[index]).tag(index)
+                    ForEach(0..<typeOfFormality.count) {
+                        switch self.typeOfFormality[$0] {
+                            case .casual:
+                                Text("Casual").tag($0)
+                            case .formal:
+                                Text("Formal").tag($0)
+                        }
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -83,27 +93,42 @@ struct ClothingSubmissionSwiftUIView: View {
                         self.isImagePickerDisplay.toggle()
                     }
                 }
+                
                 Picker(selection: $selectedTypeOfClothing, label: Text("Please choose a type of clothing")) {
                     ForEach(0 ..< typesOfClothing.count) {
-                        Text(self.typesOfClothing[$0])
+                        switch typesOfClothing[$0] {
+                        case .shirt:
+                            Text("Shirt")
+                        case .longSleeveShirt:
+                            Text("Long-Sleeve Shirt")
+                        case .pants:
+                            Text("Pants")
+                        case .shorts:
+                            Text("Shorts")
+                        case .skirt:
+                            Text("Skirt")
+                        }
                     }
                 }
                 .shadow(radius: 5)
-                
-                HStack {
-                    Text("Cold")
-                        .foregroundColor(.blue)
-                        .font(.headline)
-                    
-                    Spacer()
-                    
-                    Text("Hot")
-                        .foregroundColor(.red)
-                        .font(.headline)
-                }
-                .padding(20)
-                
-                Slider(value: $fahrenheit, in: 0...100, step: 1)
+//
+//                HStack {
+//                    Text("Cold")
+//                        .foregroundColor(.blue)
+//                        .font(.headline)
+//
+//                    Spacer()
+//
+//                    Text("Hot")
+//                        .foregroundColor(.red)
+//                        .font(.headline)
+//                }
+//                .padding(20)
+//
+//                Slider(value: $fahrenheit, in: 0...100, step: 1)
+                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
+                    .padding()
+                Spacer()
                 
             }
             .sheet(isPresented: self.$isImagePickerDisplay) {
@@ -130,8 +155,20 @@ struct ClothingSubmissionSwiftUIView: View {
             existingArticleOfClothing!.red = Int16(Int.random(in: 0...255))
             existingArticleOfClothing!.green = Int16(Int.random(in: 0...255))
             existingArticleOfClothing!.blue = Int16(Int.random(in: 0...255))
-            existingArticleOfClothing!.appropriateTemperature = fahrenheit
-            existingArticleOfClothing!.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
+            
+            if selectedTemperature == 0 {
+                existingArticleOfClothing!.rawAppropriateTemperature = Temperature.veryCold.rawValue
+            } else if selectedTemperature == 1 {
+                existingArticleOfClothing!.rawAppropriateTemperature = Temperature.cold.rawValue
+            } else if selectedTemperature == 2 {
+                existingArticleOfClothing!.rawAppropriateTemperature = Temperature.mild.rawValue
+            } else if selectedTemperature == 3 {
+                existingArticleOfClothing!.rawAppropriateTemperature = Temperature.hot.rawValue
+            } else {
+                existingArticleOfClothing!.rawAppropriateTemperature = Temperature.veryHot.rawValue
+            }
+
+            existingArticleOfClothing!.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing].rawValue
             existingArticleOfClothing!.image = selectedImage
             
             do {
@@ -151,8 +188,20 @@ struct ClothingSubmissionSwiftUIView: View {
             newArticleOfClothing.red = Int16(Int.random(in: 0...255))
             newArticleOfClothing.green = Int16(Int.random(in: 0...255))
             newArticleOfClothing.blue = Int16(Int.random(in: 0...255))
-            newArticleOfClothing.appropriateTemperature = fahrenheit
-            newArticleOfClothing.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing]
+            
+            if selectedTemperature == 0 {
+                newArticleOfClothing.rawAppropriateTemperature = Temperature.veryCold.rawValue
+            } else if selectedTemperature == 1 {
+                newArticleOfClothing.rawAppropriateTemperature = Temperature.cold.rawValue
+            } else if selectedTemperature == 2 {
+                newArticleOfClothing.rawAppropriateTemperature = Temperature.mild.rawValue
+            } else if selectedTemperature == 3 {
+                newArticleOfClothing.rawAppropriateTemperature = Temperature.hot.rawValue
+            } else {
+                newArticleOfClothing.rawAppropriateTemperature = Temperature.veryHot.rawValue
+            }
+            
+            newArticleOfClothing.rawTypeOfClothing = typesOfClothing[selectedTypeOfClothing].rawValue
             newArticleOfClothing.image = selectedImage
             newArticleOfClothing.picked = 0
             do {
@@ -165,7 +214,17 @@ struct ClothingSubmissionSwiftUIView: View {
     
     func checkForExistingArticleOfClothing() {
         if existingArticleOfClothing != nil {
-            fahrenheit = existingArticleOfClothing!.appropriateTemperature
+            if existingArticleOfClothing!.appropriateTemperature == Temperature.veryCold {
+                selectedTemperature = 0
+            } else if existingArticleOfClothing!.appropriateTemperature == Temperature.cold {
+                selectedTemperature = 1
+            } else if existingArticleOfClothing!.appropriateTemperature == Temperature.mild{
+                selectedTemperature = 2
+            } else if existingArticleOfClothing!.appropriateTemperature == Temperature.hot {
+                selectedTemperature = 3
+            } else {
+                selectedTemperature = 4
+            }
             selectedImage = existingArticleOfClothing!.image
             switch existingArticleOfClothing!.formality {
             case .casual:

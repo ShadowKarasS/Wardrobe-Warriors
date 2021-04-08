@@ -31,7 +31,8 @@ struct OutfitSubmissionSwiftUIView: View {
                         Spacer()
                     }
                     .padding(3)
-                    ForEach(1..<matchedTops.count) { index in
+                    // can go out of bounds if not enough data
+                    ForEach(0..<matchedTops.count) { index in
                         MatchedOutfitSwiftUIView(numberPicked: index, matchedTops[index], matchedBottoms[index]) // matchedTops[0], matchedBottoms[0]
                     }
                 }
@@ -60,22 +61,44 @@ struct OutfitSubmissionSwiftUIView: View {
     
     func createOutfits() {
         var matchedOutfits: Int16 = 1
+        var consideredClothes = [ArticleOfClothing]()
         var consideredTops = [ArticleOfClothing]()
         var consideredBottoms =  [ArticleOfClothing]()
         var topCount = 0
         var bottomCount = 0
         
         if checkNewDay() {
-            // TODO: implement weather pulling
-            for articleOfClothing in articlesOfClothing {
+            for i in 0..<articlesOfClothing.count {
                 // set picked back to zero and save
-                articleOfClothing.picked = 0
+                articlesOfClothing[i].picked = 0
                 do {
-                    try articleOfClothing.managedObjectContext?.save()
+                    try articlesOfClothing[i].managedObjectContext?.save()
                 } catch {
                     print(error)
                 }
                 
+                if Int(e.getWeather()) > 32 &&
+                    articlesOfClothing[i].appropriateTemperature == .veryCold {
+                    consideredClothes.insert(articlesOfClothing[i], at: i)
+                } else if Int(e.getWeather()) >= 32 &&
+                            Int(e.getWeather()) < 50 &&
+                            articlesOfClothing[i].appropriateTemperature == .cold {
+                    consideredClothes.insert(articlesOfClothing[i], at: i)
+                } else if Int(e.getWeather()) >= 50 &&
+                            Int(e.getWeather()) < 65 &&
+                            articlesOfClothing[i].appropriateTemperature == .mild {
+                    consideredClothes.insert(articlesOfClothing[i], at: i)
+                } else if Int(e.getWeather()) >= 65 &&
+                            Int(e.getWeather()) < 85 &&
+                            articlesOfClothing[i].appropriateTemperature == .hot {
+                    consideredClothes.insert(articlesOfClothing[i], at: i)
+                } else if Int(e.getWeather()) >= 85 &&
+                            articlesOfClothing[i].appropriateTemperature == .veryHot {
+                    consideredClothes.insert(articlesOfClothing[i], at: i)
+                }
+            }
+            
+            for articleOfClothing in consideredClothes {
                 // check formality
                 if articleOfClothing.formality == selectedFormality {
                     if articleOfClothing.typeOfClothing == .shirt || articleOfClothing.typeOfClothing == .longSleeveShirt {
@@ -92,13 +115,18 @@ struct OutfitSubmissionSwiftUIView: View {
             
             // TODO: implement color matching
             for i in 0..<consideredTops.count {
-                consideredTops[i].picked = matchedOutfits
                 matchedTops.insert(consideredTops[i], at: Int(matchedOutfits - 1))
-                consideredBottoms[i].picked = matchedOutfits
-                matchedBottoms.insert(consideredBottoms[i], at: Int(matchedOutfits - 1))
+                matchedTops[Int(matchedOutfits - 1)].picked = matchedOutfits
+                
+                let matchedIndex = matchComplementaryColors(inputColor: consideredTops[i].color, consideredBottoms: consideredBottoms) // get the index for the matched bottom
+                matchedBottoms.insert(consideredBottoms[matchedIndex], at: Int(matchedOutfits - 1)) // insert the matched bottom using the array
+                matchedBottoms[Int(matchedOutfits - 1)].picked = matchedOutfits
+                consideredBottoms.remove(at: matchedIndex) // remove no repeats
+//                consideredBottoms[i].picked = matchedOutfits
+//                matchedBottoms.insert(consideredBottoms[i], at: Int(matchedOutfits - 1))
                 matchedOutfits += 1
                 
-                if matchedOutfits == 5  {
+                if matchedOutfits > 5 || consideredBottoms.isEmpty  {
                     break
                 }
             }
@@ -194,9 +222,100 @@ struct OutfitSubmissionSwiftUIView: View {
         //      }
     }
     
-    func matchArticlesOfClothing() {
-        
+    func matchComplementaryColors(inputColor: Colors, consideredBottoms: [ArticleOfClothing]) -> Int {
+        switch inputColor {
+        case .red:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .black ||
+                    consideredBottoms[i].color == .gray ||
+                    consideredBottoms[i].color == .white ||
+                    consideredBottoms[i].color == .green {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+        case .yellow:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .black ||
+                    consideredBottoms[i].color == .blue ||
+                    consideredBottoms[i].color == .gray ||
+                    consideredBottoms[i].color == .white {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+        case .green:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .black ||
+                consideredBottoms[i].color == .gray ||
+                consideredBottoms[i].color == .white {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+        case .cyan:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .white ||
+                    consideredBottoms[i].color == .black ||
+                    consideredBottoms[i].color == .red ||
+                    consideredBottoms[i].color == .gray {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+        case .blue:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .white ||
+                    consideredBottoms[i].color == .gray ||
+                    consideredBottoms[i].color == .yellow ||
+                    consideredBottoms[i].color == .black {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+        case .magenta:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .black ||
+                    consideredBottoms[i].color == .white ||
+                    consideredBottoms[i].color == .gray ||
+                    consideredBottoms[i].color == .green {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+        case .white:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .black ||
+                    consideredBottoms[i].color == .blue ||
+                    consideredBottoms[i].color == .red {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+            
+        case .black:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .black ||
+                    consideredBottoms[i].color == .blue ||
+                    consideredBottoms[i].color == .gray ||
+                    consideredBottoms[i].color == .white {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+            
+        case .gray:
+            for i in 0..<consideredBottoms.count {
+                if consideredBottoms[i].color == .black ||
+                    consideredBottoms[i].color == .blue ||
+                    consideredBottoms[i].color == .white {
+                    return i
+                }
+            }
+            return Int.random(in: 0..<consideredBottoms.count)
+        }
     }
+
     
     func checkNewDay() -> Bool {
         let defaults = UserDefaults.standard
