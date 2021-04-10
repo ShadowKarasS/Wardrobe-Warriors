@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import CoreGraphics
 
 struct ClothingSubmissionSwiftUIView: View {
     
@@ -22,8 +23,6 @@ struct ClothingSubmissionSwiftUIView: View {
     // MARK: Formality Variables
     @State private var pickedFormality = 0
     var typeOfFormality = [Formality.casual, Formality.formal]
-    
-//    @State private var fahrenheit: Double = 0
     
     // MARK: Camera Variables
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -152,9 +151,11 @@ struct ClothingSubmissionSwiftUIView: View {
                 existingArticleOfClothing!.rawFormality = Formality.formal.rawValue
             }
             
-            existingArticleOfClothing!.red = Int16(Int.random(in: 0...255))
-            existingArticleOfClothing!.green = Int16(Int.random(in: 0...255))
-            existingArticleOfClothing!.blue = Int16(Int.random(in: 0...255))
+            let rgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 100))
+            
+            existingArticleOfClothing!.red = Int16(rgb.red)
+            existingArticleOfClothing!.green = Int16(rgb.green)
+            existingArticleOfClothing!.blue = Int16(rgb.blue)
             
             if selectedTemperature == 0 {
                 existingArticleOfClothing!.rawAppropriateTemperature = Temperature.veryCold.rawValue
@@ -185,9 +186,13 @@ struct ClothingSubmissionSwiftUIView: View {
             } else {
                 newArticleOfClothing.rawFormality = Formality.formal.rawValue
             }
-            newArticleOfClothing.red = Int16(Int.random(in: 0...255))
-            newArticleOfClothing.green = Int16(Int.random(in: 0...255))
-            newArticleOfClothing.blue = Int16(Int.random(in: 0...255))
+            
+            let rgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 100))
+            
+            
+            newArticleOfClothing.red = Int16(rgb.red)
+            newArticleOfClothing.green = Int16(rgb.green)
+            newArticleOfClothing.blue = Int16(rgb.blue)
             
             if selectedTemperature == 0 {
                 newArticleOfClothing.rawAppropriateTemperature = Temperature.veryCold.rawValue
@@ -247,6 +252,49 @@ struct ClothingSubmissionSwiftUIView: View {
             }
 
         }
+    }
+    
+    
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
+    }
+//    self.resizeImage(UIImage(named: "Image")!, targetSize: CGSizeMake(200.0, 200.0))
+
+    func getPixelColor(image: UIImage, pos: CGPoint) -> (red: CGFloat, green: CGFloat, blue: CGFloat) {
+        let resizedImage = resizeImage(image: image, targetSize: CGSize(width: 200.0, height: 200.0))
+        
+        let pixelData = (resizedImage.cgImage!).dataProvider!.data
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+
+        let pixelInfo: Int = ((Int(resizedImage.size.width) * Int(pos.y)) + Int(pos.x)) * 4
+
+        let r = CGFloat(data[pixelInfo])
+        let g = CGFloat(data[pixelInfo + 1])
+        let b = CGFloat(data[pixelInfo + 2])
+
+        return (r, g, b)
     }
 }
 
