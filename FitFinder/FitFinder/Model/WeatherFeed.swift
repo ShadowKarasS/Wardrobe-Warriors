@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WeatherFeed:ObservableObject, Codable {
     enum CodingKeys: CodingKey {
@@ -112,3 +113,4 @@ class subGoogle: ObservableObject, Codable{
         try container.encode(formatted_address, forKey: .formatted_address)
     }
 }
+
