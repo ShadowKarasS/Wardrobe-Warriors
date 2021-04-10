@@ -24,7 +24,7 @@ struct WardrobeNavigationSwiftUIView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     HStack {
-                        Text("  " + TypeOfClothing.longSleeveShirt.rawValue)
+                        Text("  Long-Sleeve Shirt")
                             .font(.headline)
                         Spacer()
                     }
@@ -58,7 +58,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         .padding(10)
                     }
                     HStack {
-                        Text("   " + TypeOfClothing.shirt.rawValue)
+                        Text("   Shirt")
                             .font(.headline)
                         Spacer()
                     }
@@ -92,7 +92,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         .padding(10)
                     }
                     HStack {
-                        Text("   " + TypeOfClothing.pants.rawValue)
+                        Text("   Pants")
                             .font(.headline)
                         Spacer()
                     }
@@ -126,7 +126,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         .padding(10)
                     }
                     HStack {
-                        Text("   " + TypeOfClothing.shorts.rawValue)
+                        Text("   Shorts")
                             .font(.headline)
                         Spacer()
                     }
@@ -160,7 +160,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         .padding(10)
                     }
                     HStack {
-                        Text("   " + TypeOfClothing.skirt.rawValue)
+                        Text("   Skirt")
                             .font(.headline)
                         Spacer()
                     }
@@ -196,7 +196,7 @@ struct WardrobeNavigationSwiftUIView: View {
                 }
                 Spacer()
             }
-            .navigationBarTitle(Text(""), displayMode: .inline)
+//            .onAppear { clearMatchedOutfits() }
             .navigationBarItems(leading:
                                     NavigationLink(destination: OutfitSubmissionSwiftUIView()) {
                                         Text("Today's Picks")
@@ -227,6 +227,17 @@ struct WardrobeNavigationSwiftUIView: View {
             print("Delete failed")
         }
     }
+    
+//    func clearMatchedOutfits() {
+//        for articleOfClothing in articlesOfClothing {
+//            articleOfClothing.picked = 0
+//            do {
+//                try articleOfClothing.managedObjectContext?.save()
+//            } catch {
+//                print(error)
+//            }
+//        }
+//    }
 }
 
 struct WardrobeNavigationSwiftUIView_Previews: PreviewProvider {
