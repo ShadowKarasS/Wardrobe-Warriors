@@ -47,16 +47,16 @@ class LocationManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             manager.stopUpdatingLocation()
             
             //Dynamic Location depends on user
-            //let latitude:Float = Float((location.coordinate).latitude)
-            //let longitude:Float = Float(location.coordinate.longitude)
+            let latitude:Float = Float((location.coordinate).latitude)
+            let longitude:Float = Float(location.coordinate.longitude)
             
             //Fix lat long Bangkok
             //let latitude:Float = 14.0395
             //let longitude:Float = 100.6154
             
             //Fix position somewhere in Columbia
-            let latitude:Float = 38.9513749744266
-            let longitude:Float = -92.32723958463691
+            //let latitude:Float = 38.9513749744266
+            //let longitude:Float = -92.32723958463691
             
             //print("Your Postion is :",latitude,longitude)
             
