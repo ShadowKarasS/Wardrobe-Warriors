@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct OutfitSubmissionSwiftUIView: View {
-    let e = Weathers(t:19)
+    let e = Weathers(t:-99)
     @State private var matchedTops = [ArticleOfClothing]()
     @State private var matchedBottoms = [ArticleOfClothing]()
 
@@ -40,7 +40,7 @@ struct OutfitSubmissionSwiftUIView: View {
             Spacer()
         }
         .frame(width: 0.0)
-        .navigationBarTitle("Today's Picks for \(String(Int(e.getWeather())))º")
+        .navigationBarTitle("Today's Picks for \(String(Int(e.getTemp())))º")
         .onAppear {
             showingAlert = true
         }
