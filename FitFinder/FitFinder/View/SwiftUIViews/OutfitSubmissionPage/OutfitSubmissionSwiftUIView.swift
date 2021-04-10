@@ -77,7 +77,7 @@ struct OutfitSubmissionSwiftUIView: View {
                     print(error)
                 }
                 
-                if Int(e.getWeather()) > 32 &&
+                if Int(e.getWeather()) < 32 &&
                     articlesOfClothing[i].appropriateTemperature == .veryCold {
                     consideredClothes.insert(articlesOfClothing[i], at: i)
                 } else if Int(e.getWeather()) >= 32 &&
