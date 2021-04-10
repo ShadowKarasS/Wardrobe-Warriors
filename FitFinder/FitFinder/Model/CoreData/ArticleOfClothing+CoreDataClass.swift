@@ -2,7 +2,7 @@
 //  ArticleOfClothing+CoreDataClass.swift
 //  FitFinder
 //
-//  Created by Noah Frew on 3/13/21.
+//  Created by Noah Frew on 4/6/21.
 //
 //
 
@@ -91,7 +91,23 @@ public class ArticleOfClothing: NSManagedObject {
         
     }
     
-    convenience init?(context: NSManagedObjectContext, image: UIImage?, red: Int16, blue: Int16, green: Int16, rawFormality: String, rawTypeOfClothing: String, appropriateTemperature: Double) {
+    var appropriateTemperature: Temperature {
+        get {
+            if rawAppropriateTemperature == Temperature.veryCold.rawValue {
+                return .veryCold
+            } else if rawAppropriateTemperature == Temperature.cold.rawValue {
+                return .cold
+            } else if rawAppropriateTemperature == Temperature.mild.rawValue {
+                return .mild
+            } else if rawAppropriateTemperature == Temperature.hot.rawValue {
+                return .hot
+            } else {
+                return .veryHot
+            }
+        }
+    }
+    
+    convenience init?(context: NSManagedObjectContext, image: UIImage?, red: Int16, blue: Int16, green: Int16, rawFormality: String, rawTypeOfClothing: String, rawAppropriateTemperature: String) {
         self.init(entity: ArticleOfClothing.entity(), insertInto: context)
         
         self.image = image
@@ -100,8 +116,7 @@ public class ArticleOfClothing: NSManagedObject {
         self.blue = blue
         self.rawFormality = rawFormality
         self.rawTypeOfClothing = rawTypeOfClothing
-        self.appropriateTemperature = appropriateTemperature
+        self.rawAppropriateTemperature = rawAppropriateTemperature
         
     }
 }
-
