@@ -29,6 +29,7 @@ class LocationManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             //print("User Allowed the privacy")
         }
         else if status == .denied{
+            print("DENIED")
             let filename = self.getDocumentsDirectory().appendingPathComponent("weatherinfo.txt")
             let reset:String = ""
             do{
@@ -62,7 +63,7 @@ class LocationManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             
             let e = Weathers(t:-99)
             e.GetAPInow(lat:latitude,lon:longitude)
-            e.PredictWeather(hours:24)
+            //e.PredictWeather(hours:24)
            
         }
     }
@@ -584,6 +585,7 @@ class Weathers:NSObject{
                     let final:String = String(lat)+"\n"+String(lon)+"\n"+temp+units+feels_like+wind_speed+wsu+humidity+hunit+weather_code+observation_time
                     do{
                     try final.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+                        self.PredictWeather(hours: 24)
                     }
                     catch{
                         print("Error")
