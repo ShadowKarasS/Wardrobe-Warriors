@@ -529,12 +529,17 @@ class Weathers:NSObject{
          if let savedString = String(data: savedData, encoding: .utf8) {
             
             let s = savedString.split(separator: "\n", omittingEmptySubsequences: false)
+            
+            if s.count > 1{
             //print("\n\n\tCheck\n",s,"\n\n\n\n")
             let actemp:Float = self.compareTemp(tem: Float(s[2])!, feels: Float(s[4])!)
             guard let e = Float(String(s[2])) else { return Float(o) }
             //print(type(of: e))
             //print(Float(actemp).rounded())
             return Float(actemp).rounded()
+            }
+            print("Check your privacy")
+            return -99
          }
         } catch {
          // Catch any errors
