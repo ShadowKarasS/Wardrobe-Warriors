@@ -30,14 +30,16 @@ struct WardrobeNavigationSwiftUIView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     HStack {
+
                         Text("  Long-Sleeve Shirt")
                             .font(.title)
                             .foregroundColor(peachColor)
                             .background(creamColor)
+
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .top, spacing: 17) {
+                        HStack(alignment: .top, spacing: 18) {
                             ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
                                 if articleOfClothing.typeOfClothing == TypeOfClothing.longSleeveShirt {
                                     if let image = articleOfClothing.image {
@@ -49,12 +51,16 @@ struct WardrobeNavigationSwiftUIView: View {
                                                 .clipShape(Rectangle())
                                                 .cornerRadius(25)
                                                 .shadow(radius: 5)
-                                                .gesture(
-                                                                LongPressGesture(minimumDuration: 1)
-                                                                    .onEnded { _ in
-                                                                        deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
-                                                                    }
-                                                            )
+                                                .onTapGesture(count: 2) {
+                                                    deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
+                                                }
+                                            // Old Way
+//                                                .gesture(
+//                                                                LongPressGesture(minimumDuration: 1)
+//                                                                    .onEnded { _ in
+//                                                                        deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
+//                                                                    }
+//                                                            )
                                         }
                                         .isDetailLink(false)
 
@@ -73,7 +79,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .top, spacing: 17) {
+                        HStack(alignment: .top, spacing: 18) {
                             ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
                                 if articleOfClothing.typeOfClothing == TypeOfClothing.shirt {
                                     if let image = articleOfClothing.image {
@@ -85,12 +91,9 @@ struct WardrobeNavigationSwiftUIView: View {
                                                 .clipShape(Rectangle())
                                                 .cornerRadius(25)
                                                 .shadow(radius: 5)
-                                                .gesture(
-                                                                LongPressGesture(minimumDuration: 1)
-                                                                    .onEnded { _ in
-                                                                        deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
-                                                                    }
-                                                            )
+                                                .onTapGesture(count: 2) {
+                                                    deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
+                                                }
 
                                         }
                                         .isDetailLink(false)
@@ -109,7 +112,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .top, spacing: 17) {
+                        HStack(alignment: .top, spacing: 18) {
                             ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
                                 if articleOfClothing.typeOfClothing == TypeOfClothing.pants {
                                     if let image = articleOfClothing.image {
@@ -121,12 +124,9 @@ struct WardrobeNavigationSwiftUIView: View {
                                                 .clipShape(Rectangle())
                                                 .cornerRadius(25)
                                                 .shadow(radius: 5)
-                                                .gesture(
-                                                                LongPressGesture(minimumDuration: 1)
-                                                                    .onEnded { _ in
-                                                                        deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
-                                                                    }
-                                                            )
+                                                .onTapGesture(count: 2) {
+                                                    deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
+                                                }
 
                                         }
                                         .isDetailLink(false)
@@ -145,7 +145,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .top, spacing: 17) {
+                        HStack(alignment: .top, spacing: 18) {
                             ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
                                 if articleOfClothing.typeOfClothing == TypeOfClothing.shorts {
                                     if let image = articleOfClothing.image {
@@ -157,12 +157,9 @@ struct WardrobeNavigationSwiftUIView: View {
                                                 .clipShape(Rectangle())
                                                 .cornerRadius(25)
                                                 .shadow(radius: 5)
-                                                .gesture(
-                                                                LongPressGesture(minimumDuration: 1)
-                                                                    .onEnded { _ in
-                                                                        deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
-                                                                    }
-                                                            )
+                                                .onTapGesture(count: 2) {
+                                                    deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
+                                                }
 
                                         }
                                         .isDetailLink(false)
@@ -181,7 +178,7 @@ struct WardrobeNavigationSwiftUIView: View {
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .top, spacing: 17) {
+                        HStack(alignment: .top, spacing: 18) {
                             ForEach(articlesOfClothing, id: \.id) { articleOfClothing in
                                 if articleOfClothing.typeOfClothing == TypeOfClothing.skirt {
                                     if let image = articleOfClothing.image {
@@ -193,12 +190,9 @@ struct WardrobeNavigationSwiftUIView: View {
                                                 .clipShape(Rectangle())
                                                 .cornerRadius(25)
                                                 .shadow(radius: 5)
-                                                .gesture(
-                                                                LongPressGesture(minimumDuration: 1)
-                                                                    .onEnded { _ in
-                                                                        deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
-                                                                    }
-                                                            )
+                                                .onTapGesture(count: 2) {
+                                                    deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
+                                                }
 
                                         }
                                         .isDetailLink(false)

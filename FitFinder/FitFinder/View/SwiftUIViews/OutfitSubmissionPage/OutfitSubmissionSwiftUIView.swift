@@ -73,7 +73,7 @@ struct OutfitSubmissionSwiftUIView: View {
         var topCount = 0
         var bottomCount = 0
         
-        if checkNewDay() {
+        if 	checkNewDay() {
             for i in 0..<articlesOfClothing.count {
                 // set picked back to zero and save
                 articlesOfClothing[i].picked = 0
@@ -119,7 +119,7 @@ struct OutfitSubmissionSwiftUIView: View {
                 }
             }
             
-            // TODO: implement color matching
+            // Matching Colors
             for i in 0..<consideredTops.count {
                 matchedTops.insert(consideredTops[i], at: Int(matchedOutfits - 1))
                 matchedTops[Int(matchedOutfits - 1)].picked = matchedOutfits
@@ -166,7 +166,7 @@ struct OutfitSubmissionSwiftUIView: View {
             }
         }
         
-        
+        // MARK: Pseudo Code
         ////        matchOutfits() {
         //        if new day {
         //          temperature = getTemperature()
