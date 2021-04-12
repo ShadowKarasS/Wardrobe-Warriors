@@ -13,19 +13,29 @@ struct WardrobeNavigationSwiftUIView: View {
     @FetchRequest(entity: ArticleOfClothing.entity(), sortDescriptors: []) var articlesOfClothing: FetchedResults<ArticleOfClothing>
     
     var body: some View {
+        
+        let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
+        let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
+        let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
+        let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
+        
         NavigationView {
             VStack {
                 HStack {
                     Text("Wardrobe")
-                        .font(.title)
-                    Spacer()
+                        .font(.largeTitle)
+                        .foregroundColor(creamColor)
                 }
                 .padding(8)
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     HStack {
-                        Text("  Long Sleeve Shirt")
-                            .font(.headline)
+
+                        Text("  Long-Sleeve Shirt")
+                            .font(.title)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
+
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -63,7 +73,9 @@ struct WardrobeNavigationSwiftUIView: View {
                     }
                     HStack {
                         Text("   Shirt")
-                            .font(.headline)
+                            .font(.title)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -94,7 +106,9 @@ struct WardrobeNavigationSwiftUIView: View {
                     }
                     HStack {
                         Text("   Pants")
-                            .font(.headline)
+                            .font(.title)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -125,7 +139,9 @@ struct WardrobeNavigationSwiftUIView: View {
                     }
                     HStack {
                         Text("   Shorts")
-                            .font(.headline)
+                            .font(.title)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -156,7 +172,9 @@ struct WardrobeNavigationSwiftUIView: View {
                     }
                     HStack {
                         Text("   Skirt")
-                            .font(.headline)
+                            .font(.title)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -188,10 +206,12 @@ struct WardrobeNavigationSwiftUIView: View {
                 }
                 Spacer()
             }
+            .padding(.top, -30)
+            .background(blueColor.ignoresSafeArea(.all))
 //            .onAppear { clearMatchedOutfits() }
             .navigationBarItems(leading:
                                     NavigationLink(destination: OutfitSubmissionSwiftUIView()) {
-                                        Text("Today's Picks")
+                                        Image(systemName: "calendar").imageScale(.medium)
                                     }
                                     .isDetailLink(false),
                                 trailing:

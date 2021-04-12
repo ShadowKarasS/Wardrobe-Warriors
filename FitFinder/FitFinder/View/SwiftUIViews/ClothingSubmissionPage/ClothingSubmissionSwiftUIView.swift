@@ -43,21 +43,28 @@ struct ClothingSubmissionSwiftUIView: View {
     }
     
     var body: some View {
+        let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
+        let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
+        let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
+        let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
+        
         NavigationView {
             VStack {
                 HStack {
                     Text("      Add New Clothes")
                         .fontWeight(.bold)
                         .font(.title)
-                    Spacer()
+                        .foregroundColor(creamColor)
                 }
                 Picker(selection: $pickedFormality, label: Text("Choose the Formality")) {
                     ForEach(0..<typeOfFormality.count) {
                         switch self.typeOfFormality[$0] {
                             case .casual:
                                 Text("Casual").tag($0)
+                                    .foregroundColor(yellowColor)
                             case .formal:
                                 Text("Formal").tag($0)
+                                    .foregroundColor(peachColor)
                         }
                     }
                 }
@@ -93,6 +100,9 @@ struct ClothingSubmissionSwiftUIView: View {
                     }
                 }
                 
+                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
+                    .padding()
+                
                 Picker(selection: $selectedTypeOfClothing, label: Text("Please choose a type of clothing")) {
                     ForEach(0 ..< typesOfClothing.count) {
                         switch typesOfClothing[$0] {
@@ -110,11 +120,29 @@ struct ClothingSubmissionSwiftUIView: View {
                     }
                 }
                 .shadow(radius: 5)
-                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
-                    .padding()
+
+//
+//                HStack {
+//                    Text("Cold")
+//                        .foregroundColor(.blue)
+//                        .font(.headline)
+//
+//                    Spacer()
+//
+//                    Text("Hot")
+//                        .foregroundColor(.red)
+//                        .font(.headline)
+//                }
+//                .padding(20)
+//
+//                Slider(value: $fahrenheit, in: 0...100, step: 1)
+//                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
+//                    .padding()
+
                 Spacer()
                 
             }
+            .background(blueColor.ignoresSafeArea(.all))
             .sheet(isPresented: self.$isImagePickerDisplay) {
                 ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
             }
