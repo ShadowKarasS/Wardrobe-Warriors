@@ -32,7 +32,8 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("  Long-Sleeve Shirt")
                             .font(.title)
-                            .foregroundColor(creamColor)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -67,7 +68,8 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("   Shirt")
                             .font(.title)
-                            .foregroundColor(creamColor)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -102,7 +104,8 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("   Pants")
                             .font(.title)
-                            .foregroundColor(creamColor)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -137,7 +140,8 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("   Shorts")
                             .font(.title)
-                            .foregroundColor(creamColor)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -172,7 +176,8 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("   Skirt")
                             .font(.title)
-                            .foregroundColor(creamColor)
+                            .foregroundColor(peachColor)
+                            .background(creamColor)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -212,7 +217,7 @@ struct WardrobeNavigationSwiftUIView: View {
 //            .onAppear { clearMatchedOutfits() }
             .navigationBarItems(leading:
                                     NavigationLink(destination: OutfitSubmissionSwiftUIView()) {
-                                        Image(systemName: "house").imageScale(.medium)
+                                        Image(systemName: "calendar").imageScale(.medium)
                                     }
                                     .isDetailLink(false),
                                 trailing:
