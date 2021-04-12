@@ -43,7 +43,10 @@ struct ClothingSubmissionSwiftUIView: View {
     }
     
     var body: some View {
+        let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
+        let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
         let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
+        let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
         
         NavigationView {
             VStack {
@@ -51,14 +54,17 @@ struct ClothingSubmissionSwiftUIView: View {
                     Text("      Add New Clothes")
                         .fontWeight(.bold)
                         .font(.title)
+                        .foregroundColor(creamColor)
                 }
                 Picker(selection: $pickedFormality, label: Text("Choose the Formality")) {
                     ForEach(0..<typeOfFormality.count) {
                         switch self.typeOfFormality[$0] {
                             case .casual:
                                 Text("Casual").tag($0)
+                                    .foregroundColor(yellowColor)
                             case .formal:
                                 Text("Formal").tag($0)
+                                    .foregroundColor(peachColor)
                         }
                     }
                 }
