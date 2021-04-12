@@ -43,13 +43,14 @@ struct ClothingSubmissionSwiftUIView: View {
     }
     
     var body: some View {
+        let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
+        
         NavigationView {
             VStack {
                 HStack {
                     Text("      Add New Clothes")
                         .fontWeight(.bold)
                         .font(.title)
-                    Spacer()
                 }
                 Picker(selection: $pickedFormality, label: Text("Choose the Formality")) {
                     ForEach(0..<typeOfFormality.count) {
@@ -93,6 +94,9 @@ struct ClothingSubmissionSwiftUIView: View {
                     }
                 }
                 
+                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
+                    .padding()
+                
                 Picker(selection: $selectedTypeOfClothing, label: Text("Please choose a type of clothing")) {
                     ForEach(0 ..< typesOfClothing.count) {
                         switch typesOfClothing[$0] {
@@ -125,11 +129,12 @@ struct ClothingSubmissionSwiftUIView: View {
 //                .padding(20)
 //
 //                Slider(value: $fahrenheit, in: 0...100, step: 1)
-                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
-                    .padding()
+//                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
+//                    .padding()
                 Spacer()
                 
             }
+            .background(blueColor.ignoresSafeArea(.all))
             .sheet(isPresented: self.$isImagePickerDisplay) {
                 ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
             }
