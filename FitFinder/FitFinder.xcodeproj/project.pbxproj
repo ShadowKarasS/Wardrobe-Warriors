@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C18BBF226222654008CE6C0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18BBF126222654008CE6C0 /* Weather.swift */; };
 		8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3F425E484FA0020AF41 /* Colors.swift */; };
 		8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E41525E5CA730020AF41 /* Extensions.swift */; };
 		8C801D27261D3E73001D3D2B /* ArticleOfClothing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C801D25261D3E73001D3D2B /* ArticleOfClothing+CoreDataClass.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C18BBF126222654008CE6C0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		8C05E3F425E484FA0020AF41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitFinderModel.xcdatamodel; sourceTree = "<group>"; };
 		8C05E41525E5CA730020AF41 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				8CD4A8DC260AC63E00E7F518 /* MatchingState.swift */,
 				8CC0F52E261787DA00FE876C /* WeatherFeed.swift */,
 				8CC0F533261787E200FE876C /* LocationManager.swift */,
+				7C18BBF126222654008CE6C0 /* Weather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				8CC0F542261B9C4A00FE876C /* TemperatureSegmentedPickerSwiftUIView.swift in Sources */,
 				8CC0F52F261787DA00FE876C /* WeatherFeed.swift in Sources */,
 				8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */,
+				7C18BBF226222654008CE6C0 /* Weather.swift in Sources */,
 				8C8027D625F7030C00DB16C7 /* FitFinderModel.xcdatamodeld in Sources */,
 				8CE60BC625EF2D8000D3E4BD /* Formality.swift in Sources */,
 				8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */,

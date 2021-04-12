@@ -77,22 +77,22 @@ struct OutfitSubmissionSwiftUIView: View {
                     print(error)
                 }
                 
-                if Int(e.getWeather()) < 32 &&
+                if Int(e.getTemp()) < 32 &&
                     articlesOfClothing[i].appropriateTemperature == .veryCold {
                     consideredClothes.insert(articlesOfClothing[i], at: i)
-                } else if Int(e.getWeather()) >= 32 &&
-                            Int(e.getWeather()) < 50 &&
+                } else if Int(e.getTemp()) >= 32 &&
+                            Int(e.getTemp()) < 50 &&
                             articlesOfClothing[i].appropriateTemperature == .cold {
                     consideredClothes.insert(articlesOfClothing[i], at: i)
-                } else if Int(e.getWeather()) >= 50 &&
-                            Int(e.getWeather()) < 65 &&
+                } else if Int(e.getTemp()) >= 50 &&
+                            Int(e.getTemp()) < 65 &&
                             articlesOfClothing[i].appropriateTemperature == .mild {
                     consideredClothes.insert(articlesOfClothing[i], at: i)
-                } else if Int(e.getWeather()) >= 65 &&
-                            Int(e.getWeather()) < 85 &&
+                } else if Int(e.getTemp()) >= 65 &&
+                            Int(e.getTemp()) < 85 &&
                             articlesOfClothing[i].appropriateTemperature == .hot {
                     consideredClothes.insert(articlesOfClothing[i], at: i)
-                } else if Int(e.getWeather()) >= 85 &&
+                } else if Int(e.getTemp()) >= 85 &&
                             articlesOfClothing[i].appropriateTemperature == .veryHot {
                     consideredClothes.insert(articlesOfClothing[i], at: i)
                 }
