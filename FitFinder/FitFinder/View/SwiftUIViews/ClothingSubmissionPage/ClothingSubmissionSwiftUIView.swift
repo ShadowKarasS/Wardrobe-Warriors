@@ -110,21 +110,6 @@ struct ClothingSubmissionSwiftUIView: View {
                     }
                 }
                 .shadow(radius: 5)
-//
-//                HStack {
-//                    Text("Cold")
-//                        .foregroundColor(.blue)
-//                        .font(.headline)
-//
-//                    Spacer()
-//
-//                    Text("Hot")
-//                        .foregroundColor(.red)
-//                        .font(.headline)
-//                }
-//                .padding(20)
-//
-//                Slider(value: $fahrenheit, in: 0...100, step: 1)
                 TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
                     .padding()
                 Spacer()
@@ -151,7 +136,13 @@ struct ClothingSubmissionSwiftUIView: View {
                 existingArticleOfClothing!.rawFormality = Formality.formal.rawValue
             }
             
-            let rgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 100))
+            let leftRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 90, y: 100))
+            let rightRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 110, y: 100))
+            let midRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 90))
+            let averageRed = (leftRgb.red + rightRgb.red + midRgb.red) / 3
+            let averageGreen = (leftRgb.green + rightRgb.green + midRgb.green) / 3
+            let averageBlue = (leftRgb.blue + rightRgb.blue + midRgb.blue) / 3
+            let rgb = (red: averageRed, green: averageGreen, blue: averageBlue)
             
             existingArticleOfClothing!.red = Int16(rgb.red)
             existingArticleOfClothing!.green = Int16(rgb.green)
@@ -187,8 +178,13 @@ struct ClothingSubmissionSwiftUIView: View {
                 newArticleOfClothing.rawFormality = Formality.formal.rawValue
             }
             
-            let rgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 100))
-            
+            let leftRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 90, y: 100))
+            let rightRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 110, y: 100))
+            let midRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 90))
+            let averageRed = (leftRgb.red + rightRgb.red + midRgb.red) / 3
+            let averageGreen = (leftRgb.green + rightRgb.green + midRgb.green) / 3
+            let averageBlue = (leftRgb.blue + rightRgb.blue + midRgb.blue) / 3
+            let rgb = (red: averageRed, green: averageGreen, blue: averageBlue)
             
             newArticleOfClothing.red = Int16(rgb.red)
             newArticleOfClothing.green = Int16(rgb.green)
@@ -290,9 +286,9 @@ struct ClothingSubmissionSwiftUIView: View {
 
         let pixelInfo: Int = ((Int(resizedImage.size.width) * Int(pos.y)) + Int(pos.x)) * 4
 
-        let r = CGFloat(data[pixelInfo])
+        let r = CGFloat(data[pixelInfo + 2])
         let g = CGFloat(data[pixelInfo + 1])
-        let b = CGFloat(data[pixelInfo + 2])
+        let b = CGFloat(data[pixelInfo])
 
         return (r, g, b)
     }
