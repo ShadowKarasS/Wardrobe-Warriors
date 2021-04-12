@@ -21,6 +21,11 @@ struct OutfitSubmissionSwiftUIView: View {
     @State private var state: MatchingState = .unmatched
     
     var body: some View {
+        let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
+        let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
+        let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
+        let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
+        
         VStack {
             if state == .matched {
                 ScrollView(.vertical, showsIndicators: false) {
@@ -57,6 +62,7 @@ struct OutfitSubmissionSwiftUIView: View {
             }
             return Alert(title: Text("What kind of outfits are you looking for?"), primaryButton: firstButton, secondaryButton: secondButton)
         }
+        .background(blueColor.ignoresSafeArea(.all))
     }
     
     func createOutfits() {
@@ -67,7 +73,7 @@ struct OutfitSubmissionSwiftUIView: View {
         var topCount = 0
         var bottomCount = 0
         
-        if checkNewDay() {
+        if 	checkNewDay() {
             for i in 0..<articlesOfClothing.count {
                 // set picked back to zero and save
                 articlesOfClothing[i].picked = 0
@@ -113,7 +119,7 @@ struct OutfitSubmissionSwiftUIView: View {
                 }
             }
             
-            // TODO: implement color matching
+            // Matching Colors
             for i in 0..<consideredTops.count {
                 matchedTops.insert(consideredTops[i], at: Int(matchedOutfits - 1))
                 matchedTops[Int(matchedOutfits - 1)].picked = matchedOutfits
@@ -160,7 +166,7 @@ struct OutfitSubmissionSwiftUIView: View {
             }
         }
         
-        
+        // MARK: Pseudo Code
         ////        matchOutfits() {
         //        if new day {
         //          temperature = getTemperature()

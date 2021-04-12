@@ -43,21 +43,28 @@ struct ClothingSubmissionSwiftUIView: View {
     }
     
     var body: some View {
+        let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
+        let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
+        let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
+        let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
+        
         NavigationView {
             VStack {
                 HStack {
                     Text("      Add New Clothes")
                         .fontWeight(.bold)
                         .font(.title)
-                    Spacer()
+                        .foregroundColor(creamColor)
                 }
                 Picker(selection: $pickedFormality, label: Text("Choose the Formality")) {
                     ForEach(0..<typeOfFormality.count) {
                         switch self.typeOfFormality[$0] {
                             case .casual:
                                 Text("Casual").tag($0)
+                                    .foregroundColor(yellowColor)
                             case .formal:
                                 Text("Formal").tag($0)
+                                    .foregroundColor(peachColor)
                         }
                     }
                 }
@@ -93,6 +100,9 @@ struct ClothingSubmissionSwiftUIView: View {
                     }
                 }
                 
+                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
+                    .padding()
+                
                 Picker(selection: $selectedTypeOfClothing, label: Text("Please choose a type of clothing")) {
                     ForEach(0 ..< typesOfClothing.count) {
                         switch typesOfClothing[$0] {
@@ -110,6 +120,7 @@ struct ClothingSubmissionSwiftUIView: View {
                     }
                 }
                 .shadow(radius: 5)
+
 //
 //                HStack {
 //                    Text("Cold")
@@ -125,11 +136,13 @@ struct ClothingSubmissionSwiftUIView: View {
 //                .padding(20)
 //
 //                Slider(value: $fahrenheit, in: 0...100, step: 1)
-                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
-                    .padding()
+//                TemperatureSegmentedPickerSwiftUIView(items: self.appropriateTemperatures, selection: self.$selectedTemperature)
+//                    .padding()
+
                 Spacer()
                 
             }
+            .background(blueColor.ignoresSafeArea(.all))
             .sheet(isPresented: self.$isImagePickerDisplay) {
                 ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
             }
@@ -151,7 +164,23 @@ struct ClothingSubmissionSwiftUIView: View {
                 existingArticleOfClothing!.rawFormality = Formality.formal.rawValue
             }
             
-            let rgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 100))
+            let rgb1 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 95, y: 95))
+            let rgb2 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 105, y: 95))
+            let rgb3 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 100))
+//            let rgb4 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 110))
+//            let rgb5 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 100))
+//            let rgb6 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 90))
+//            let rgb7 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 140))
+//            let rgb8 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 130))
+//            let rgb9 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 120))
+//            let rgb10 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 110))
+//            let rgb11 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 100))
+//            let rgb12 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 90))
+            
+            let rred = (rgb1.red + rgb2.red + rgb3.red) / 3
+            let rgreen = (rgb1.green + rgb2.green + rgb3.green) / 3
+            let rblue = (rgb1.blue + rgb2.blue + rgb3.blue) / 3
+            let rgb = (red: rred, green: rgreen, blue:rblue)
             
             existingArticleOfClothing!.red = Int16(rgb.red)
             existingArticleOfClothing!.green = Int16(rgb.green)
@@ -187,22 +216,22 @@ struct ClothingSubmissionSwiftUIView: View {
                 newArticleOfClothing.rawFormality = Formality.formal.rawValue
             }
             
-            let rgb1 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 140))
-            let rgb2 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 130))
-            let rgb3 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 120))
-            let rgb4 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 110))
-            let rgb5 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 100))
-            let rgb6 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 90))
-            let rgb7 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 140))
-            let rgb8 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 130))
-            let rgb9 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 120))
-            let rgb10 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 110))
-            let rgb11 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 100))
-            let rgb12 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 90))
-            
-            let rred = (rgb1.red + rgb2.red + rgb3.red + rgb4.red + rgb5.red + rgb6.red + rgb7.red + rgb8.red + rgb9.red + rgb10.red + rgb11.red + rgb12.red)/12
-            let rgreen = (rgb1.green + rgb2.green + rgb3.green + rgb4.green + rgb5.green + rgb6.green + rgb7.green + rgb8.green + rgb9.green + rgb10.green + rgb11.green + rgb12.green)/12
-            let rblue = (rgb1.blue + rgb2.blue + rgb3.blue + rgb4.blue + rgb5.blue + rgb6.blue + rgb7.blue + rgb8.blue + rgb9.blue + rgb10.blue + rgb11.blue + rgb12.blue)/12
+            let rgb1 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 95, y: 95))
+            let rgb2 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 105, y: 95))
+            let rgb3 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 100))
+//            let rgb4 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 110))
+//            let rgb5 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 100))
+//            let rgb6 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 90))
+//            let rgb7 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 140))
+//            let rgb8 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 130))
+//            let rgb9 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 120))
+//            let rgb10 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 110))
+//            let rgb11 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 100))
+//            let rgb12 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 90))
+//
+            let rred = (rgb1.red + rgb2.red + rgb3.red) / 3
+            let rgreen = (rgb1.green + rgb2.green + rgb3.green) / 3
+            let rblue = (rgb1.blue + rgb2.blue + rgb3.blue) / 3
             let rgb = (red: rred, green: rgreen, blue:rblue)
             
             
