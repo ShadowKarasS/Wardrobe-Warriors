@@ -136,13 +136,23 @@ struct ClothingSubmissionSwiftUIView: View {
                 existingArticleOfClothing!.rawFormality = Formality.formal.rawValue
             }
             
-            let leftRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 90, y: 100))
-            let rightRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 110, y: 100))
-            let midRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 90))
-            let averageRed = (leftRgb.red + rightRgb.red + midRgb.red) / 3
-            let averageGreen = (leftRgb.green + rightRgb.green + midRgb.green) / 3
-            let averageBlue = (leftRgb.blue + rightRgb.blue + midRgb.blue) / 3
-            let rgb = (red: averageRed, green: averageGreen, blue: averageBlue)
+            let rgb1 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 140))
+            let rgb2 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 130))
+            let rgb3 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 120))
+            let rgb4 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 110))
+            let rgb5 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 100))
+            let rgb6 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 90))
+            let rgb7 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 140))
+            let rgb8 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 130))
+            let rgb9 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 120))
+            let rgb10 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 110))
+            let rgb11 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 100))
+            let rgb12 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 90))
+            
+            let rred = (rgb1.red + rgb2.red + rgb3.red + rgb4.red + rgb5.red + rgb6.red + rgb7.red + rgb8.red + rgb9.red + rgb10.red + rgb11.red + rgb12.red)/12
+            let rgreen = (rgb1.green + rgb2.green + rgb3.green + rgb4.green + rgb5.green + rgb6.green + rgb7.green + rgb8.green + rgb9.green + rgb10.green + rgb11.green + rgb12.green)/12
+            let rblue = (rgb1.blue + rgb2.blue + rgb3.blue + rgb4.blue + rgb5.blue + rgb6.blue + rgb7.blue + rgb8.blue + rgb9.blue + rgb10.blue + rgb11.blue + rgb12.blue)/12
+            let rgb = (red: rred, green: rgreen, blue:rblue)
             
             existingArticleOfClothing!.red = Int16(rgb.red)
             existingArticleOfClothing!.green = Int16(rgb.green)
@@ -178,13 +188,24 @@ struct ClothingSubmissionSwiftUIView: View {
                 newArticleOfClothing.rawFormality = Formality.formal.rawValue
             }
             
-            let leftRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 90, y: 100))
-            let rightRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 110, y: 100))
-            let midRgb = getPixelColor(image: selectedImage!, pos: CGPoint(x: 100, y: 90))
-            let averageRed = (leftRgb.red + rightRgb.red + midRgb.red) / 3
-            let averageGreen = (leftRgb.green + rightRgb.green + midRgb.green) / 3
-            let averageBlue = (leftRgb.blue + rightRgb.blue + midRgb.blue) / 3
-            let rgb = (red: averageRed, green: averageGreen, blue: averageBlue)
+            let rgb1 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 140))
+            let rgb2 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 130))
+            let rgb3 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 120))
+            let rgb4 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 110))
+            let rgb5 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 100))
+            let rgb6 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 70, y: 90))
+            let rgb7 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 140))
+            let rgb8 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 130))
+            let rgb9 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 120))
+            let rgb10 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 110))
+            let rgb11 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 100))
+            let rgb12 = getPixelColor(image: selectedImage!, pos: CGPoint(x: 130, y: 90))
+            
+            let rred = (rgb1.red + rgb2.red + rgb3.red + rgb4.red + rgb5.red + rgb6.red + rgb7.red + rgb8.red + rgb9.red + rgb10.red + rgb11.red + rgb12.red)/12
+            let rgreen = (rgb1.green + rgb2.green + rgb3.green + rgb4.green + rgb5.green + rgb6.green + rgb7.green + rgb8.green + rgb9.green + rgb10.green + rgb11.green + rgb12.green)/12
+            let rblue = (rgb1.blue + rgb2.blue + rgb3.blue + rgb4.blue + rgb5.blue + rgb6.blue + rgb7.blue + rgb8.blue + rgb9.blue + rgb10.blue + rgb11.blue + rgb12.blue)/12
+            let rgb = (red: rred, green: rgreen, blue:rblue)
+            
             
             newArticleOfClothing.red = Int16(rgb.red)
             newArticleOfClothing.green = Int16(rgb.green)

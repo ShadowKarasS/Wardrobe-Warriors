@@ -67,7 +67,7 @@ struct OutfitSubmissionSwiftUIView: View {
         var topCount = 0
         var bottomCount = 0
         
-        if checkNewDay() {
+        if 	checkNewDay() {
             for i in 0..<articlesOfClothing.count {
                 // set picked back to zero and save
                 articlesOfClothing[i].picked = 0

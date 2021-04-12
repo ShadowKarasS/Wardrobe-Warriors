@@ -107,7 +107,7 @@ class Weathers:NSObject{
          }
         } catch {
          // Catch any errors
-         print("Unable to read the file")
+         print("Unable to Load the file")
         }
         return result
     }
@@ -149,10 +149,9 @@ class Weathers:NSObject{
         return result
     }
     func getAnalyzeData(option:String)->String{
-        if option != nil{
-            var source:String = self.getAnalyzeResult()
+        if option != ""{
+            let source:String = self.getAnalyzeResult()
             let field = source.split(separator: "\n")
-            var result:String = ""
             if option == "AVGTEMP"{
                 //return average temperature
                 let ans = field[0].split(separator:":")
@@ -195,33 +194,33 @@ class Weathers:NSObject{
             }
             else if option == "WCODE"{
                 //WCODE = All Weather Code with colon for seperate each code
-                var index:Int = 6
+                let index:Int = 6
                 let final = field[5].split(separator:":")
                 var result = ""
                 for n in index...(Int(final[1])!+index-1){
-                    var code = field[n].split(separator:":")
+                    let code = field[n].split(separator:":")
                     result = result + code[0] + ":"
                 }
                 return String(result)
             }
             else if option == "WCODEFBYHR"{
                 //WCODEF = Weater code frequency by number of hours on each
-                var index:Int = 6
+                let index:Int = 6
                 let final = field[5].split(separator:":")
                 var result = ""
                 for n in index...(Int(final[1])!+index-1){
-                    var code = field[n].split(separator:":")
+                    let code = field[n].split(separator:":")
                     result = result + code[1] + ":"
                 }
                 return String(result)
             }
             else if option == "WCODEFBYPERCENT"{
                 //WCODEF = Weater code frequency by percentage on each
-                var index:Int = 6
+                let index:Int = 6
                 let final = field[5].split(separator:":")
                 var result = ""
                 for n in index...(Int(final[1])!+index-1){
-                    var code = field[n].split(separator:":")
+                    let code = field[n].split(separator:":")
                     result = result + code[2] + ":"
                 }
                 return String(result)
@@ -239,9 +238,9 @@ class Weathers:NSObject{
         //formatter2.dateStyle = .long
         formatter2.timeStyle = .short
         formatter2.timeZone = .current
-        //formatter2.timeZone = TimeZone(abbreviation: "UTC")
+        //formatter2.timeZone = TimeZone(abbreviation: "AKDT")
         let now = Date()
-        let i = now.description(with: .current)
+        //let i = now.description(with: .current)
         //print(now.description(with: .current))
         let datetime = formatter2.string(from: now)
         print("Now => ",datetime)
@@ -253,6 +252,10 @@ class Weathers:NSObject{
             if hr < 8{
                 print(8-hr+1,"hours Left before 8 PM")
                 return 8-hr+1+24 //stable
+            }
+            else if hr == 12{
+                print("MidDay")
+                return 9+24
             }
             else
             {
@@ -268,7 +271,7 @@ class Weathers:NSObject{
                 return (9-hr) //stable
             }
             else if hr == 12{
-                //print("Midnight")
+                print("MidNight")
                 return 9 //stable
             }
             else
@@ -282,7 +285,7 @@ class Weathers:NSObject{
             print("Invalid Time")
             return -1
         }
-        return -1
+        //return -1
     }
     func PredictWeather(hours:Double){
         
@@ -291,7 +294,7 @@ class Weathers:NSObject{
         let formatter = ISO8601DateFormatter()
         let date2 = now.addingTimeInterval(3600*hours)
         let datetime2 = formatter.string(from: date2)
-        let datetime = formatter.string(from: now)
+        //let datetime = formatter.string(from: now)
         
         var time_id:Int = self.getStartTimeID()
         if(time_id<0){
@@ -301,10 +304,10 @@ class Weathers:NSObject{
         var time8amto8pm_statement:String = ""
         
         // t > 8pm and t < 8pm are compatible
-        var where_statement:String = " id >= \(time_id) and id <= \(time_id+12)"
+        var where_statement:String = " id >= \(time_id) and id <= \(time_id+12-1)"
         if time_id > 24{
             time_id = time_id - 24
-            where_statement = " id >= 1 and id <= \(time_id)"
+            where_statement = " id >= 1 and id <= \(time_id-1)"
         }
         
         time8amto8pm_statement = "SELECT *From weather where \(where_statement)"
@@ -343,11 +346,11 @@ class Weathers:NSObject{
                     //DB Weather
                     
                     //Reset DB
-                    dbw.readman(Statement: "DELETE FROM weather WHERE 1")
+                    dbweathers = dbw.readman(Statement: "DELETE FROM weather WHERE 1")
                     //Reset DB
                     
                     var counter:Int = 0 //counter for hours
-                    var acttemp:Float = 0 //actually temperature
+                    //var acttemp:Float = 0 //actually temperature
                     
                     
                     print("\nPredict Weather (\(self.getGeoLoc()) ) from 8 AM to 8 PM From Now")
@@ -404,6 +407,7 @@ class Weathers:NSObject{
                     var c:Int = 0
                     for y in dbweathers{
                         //print(y.time)
+                        let _ = y
                         c+=1
                     }
                     //print(c) // check total distinct weather code
@@ -450,7 +454,7 @@ class Weathers:NSObject{
                     print("Is it going to be Rain? ",self.getAnalyzeData(option: "RAINORNOT"))
                     print("There are ",self.getAnalyzeData(option: "NUMWCODE")," categories of weather during the duration")
                     print("Here is All weather code :",self.getAnalyzeData(option: "WCODE").split(separator: ":"))
-                    print("Here is the All-weather code by total hours on each code: ",self.getAnalyzeData(option: "WCODEFBYHR").split(separator: ":"))
+                    print("Here is the All-weather code by total hours on each code ( it's statistic, not continuous): ",self.getAnalyzeData(option: "WCODEFBYHR").split(separator: ":"))
                     print("Here is All weather code by percentage :",self.getAnalyzeData(option: "WCODEFBYPERCENT").split(separator: ":"))
                     print("The total number of predict's hours is",self.getAnalyzeData(option: "TOTALPREDICTHR"))
                     //Example command to get value anywhere
@@ -529,12 +533,17 @@ class Weathers:NSObject{
          if let savedString = String(data: savedData, encoding: .utf8) {
             
             let s = savedString.split(separator: "\n", omittingEmptySubsequences: false)
+            
+            if s.count > 1{
             //print("\n\n\tCheck\n",s,"\n\n\n\n")
             let actemp:Float = self.compareTemp(tem: Float(s[2])!, feels: Float(s[4])!)
-            guard let e = Float(String(s[2])) else { return Float(o) }
+            //guard let e = Float(String(s[2])) else { return Float(o) }
             //print(type(of: e))
             //print(Float(actemp).rounded())
             return Float(actemp).rounded()
+            }
+            print("Check your privacy")
+            return -99
          }
         } catch {
          // Catch any errors
@@ -557,12 +566,11 @@ class Weathers:NSObject{
         }
         
         let session = URLSession.shared
+
         let dataTask = session.dataTask(with: url!){
             (data,response,error) in
-            
             //check error
             if error == nil && data != nil{
-
                 let decoder = JSONDecoder()
                 //let str = "Super long string here"
                 let filename = self.getDocumentsDirectory().appendingPathComponent("weatherinfo.txt")
