@@ -192,44 +192,44 @@ class Weathers:NSObject{
                 let ans = field[5].split(separator:":")
                 return String(ans[1])
             }
-            else if option == "WCODE"{
-                //WCODE = All Weather Code with colon for seperate each code
-                let index:Int = 6
-                let final = field[5].split(separator:":")
-                var result = ""
-                for n in index...(Int(final[1])!+index-1){
-                    let code = field[n].split(separator:":")
-                    result = result + code[0] + ":"
-                }
-                return String(result)
-            }
-            else if option == "WCODEFBYHR"{
-                //WCODEF = Weater code frequency by number of hours on each
-                let index:Int = 6
-                let final = field[5].split(separator:":")
-                var result = ""
-                for n in index...(Int(final[1])!+index-1){
-                    let code = field[n].split(separator:":")
-                    result = result + code[1] + ":"
-                }
-                return String(result)
-            }
-            else if option == "WCODEFBYPERCENT"{
-                //WCODEF = Weater code frequency by percentage on each
-                let index:Int = 6
-                let final = field[5].split(separator:":")
-                var result = ""
-                for n in index...(Int(final[1])!+index-1){
-                    let code = field[n].split(separator:":")
-                    result = result + code[2] + ":"
-                }
-                return String(result)
-            }
-            else if option == "TOTALPREDICTHR"{
-                //TOTALPREDICTHR = TOTAL PREDICT HOURS
-                let ans = field[6+Int(self.getAnalyzeData(option: "NUMWCODE"))!].split(separator: ":")
-                return String(ans[1])
-            }
+//            else if option == "WCODE"{
+//                //WCODE = All Weather Code with colon for seperate each code
+//                let index:Int = 6
+//                let final = field[5].split(separator:":")
+//                var result = ""
+//                for n in index...(Int(final[1]) + index - 1){
+//                    let code = field[n].split(separator:":")
+//                    result = result + code[0] + ":"
+//                }
+//                return String(result)
+//            }
+//            else if option == "WCODEFBYHR"{
+//                //WCODEF = Weater code frequency by number of hours on each
+//                let index:Int = 6
+//                let final = field[5].split(separator:":")
+//                var result = ""
+//                for n in index...(Int(final[1])!+index-1){
+//                    let code = field[n].split(separator:":")
+//                    result = result + code[1] + ":"
+//                }
+//                return String(result)
+//            }
+//            else if option == "WCODEFBYPERCENT"{
+//                //WCODEF = Weater code frequency by percentage on each
+//                let index:Int = 6
+//                let final = field[5].split(separator:":")
+//                var result = ""
+//                for n in index...(Int(final[1])!+index-1){
+//                    let code = field[n].split(separator:":")
+//                    result = result + code[2] + ":"
+//                }
+//                return String(result)
+//            }
+//            else if option == "TOTALPREDICTHR"{
+//                //TOTALPREDICTHR = TOTAL PREDICT HOURS
+//                let ans = field[6+Int(self.getAnalyzeData(option: "NUMWCODE"))!].split(separator: ":")
+//                return String(ans[1])
+//            }
         }
         return "Error : Invalid Parameter"
     }
