@@ -23,6 +23,7 @@ struct WardrobeNavigationSwiftUIView: View {
             VStack {
                 HStack {
                     Text("Wardrobe")
+                        .fontWeight(.bold)
                         .font(.largeTitle)
                         .foregroundColor(creamColor)
                 }
@@ -30,12 +31,18 @@ struct WardrobeNavigationSwiftUIView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     HStack {
-
-                        Text("  Long-Sleeve Shirt")
+                        Text("   Long Sleeve Shirts")
                             .font(.title)
                             .foregroundColor(peachColor)
-                            .background(creamColor)
-
+                            .padding(3)
+                            .background(
+                                RoundedRectangle(
+                                    cornerRadius: 10,
+                                    style: .continuous
+                                )
+                                .fill(creamColor)
+                            )
+                            .offset(x: -6, y: 0)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -72,10 +79,18 @@ struct WardrobeNavigationSwiftUIView: View {
                         .padding(10)
                     }
                     HStack {
-                        Text("   Shirt")
+                        Text("   Shirts")
                             .font(.title)
                             .foregroundColor(peachColor)
-                            .background(creamColor)
+                            .padding(3)
+                            .background(
+                                RoundedRectangle(
+                                    cornerRadius: 10,
+                                    style: .continuous
+                                )
+                                .fill(creamColor)
+                            )
+                            .offset(x: -6, y: 0)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -108,7 +123,15 @@ struct WardrobeNavigationSwiftUIView: View {
                         Text("   Pants")
                             .font(.title)
                             .foregroundColor(peachColor)
-                            .background(creamColor)
+                            .padding(3)
+                            .background(
+                                RoundedRectangle(
+                                    cornerRadius: 10,
+                                    style: .continuous
+                                )
+                                .fill(creamColor)
+                            )
+                            .offset(x: -6, y: 0)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -141,7 +164,15 @@ struct WardrobeNavigationSwiftUIView: View {
                         Text("   Shorts")
                             .font(.title)
                             .foregroundColor(peachColor)
-                            .background(creamColor)
+                            .padding(3)
+                            .background(
+                                RoundedRectangle(
+                                    cornerRadius: 10,
+                                    style: .continuous
+                                )
+                                .fill(creamColor)
+                            )
+                            .offset(x: -6, y: 0)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -171,10 +202,18 @@ struct WardrobeNavigationSwiftUIView: View {
                         .padding(10)
                     }
                     HStack {
-                        Text("   Skirt")
+                        Text("   Skirts")
                             .font(.title)
                             .foregroundColor(peachColor)
-                            .background(creamColor)
+                            .padding(3)
+                            .background(
+                                RoundedRectangle(
+                                    cornerRadius: 10,
+                                    style: .continuous
+                                )
+                                .fill(creamColor)
+                            )
+                            .offset(x: -6, y: 0)
                         Spacer()
                     }
                     ScrollView(.horizontal, showsIndicators: false) {

@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct MatchedOutfitSwiftUIView: View {
+    private static let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
+    private static let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
+    private static let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
+    private static let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
+
     var matchedTop: ArticleOfClothing
     var matchedBottom: ArticleOfClothing
     var numberPicked = 0
@@ -36,11 +41,20 @@ struct MatchedOutfitSwiftUIView: View {
     
     var body: some View {
         HStack {
-            Text(headlineText)
-                .font(.headline)
-            Spacer()
+            Text("   " + headlineText)
+                .font(.title)
+                .foregroundColor(MatchedOutfitSwiftUIView.peachColor)
+                .padding(3)
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 10,
+                        style: .continuous
+                    )
+                    .fill(MatchedOutfitSwiftUIView.creamColor)
+                )
+                .offset(x: -6, y: 0)
+                Spacer()
         }
-        .padding(4)
 
         VStack {
             if let image = matchedTop.image {
@@ -64,10 +78,11 @@ struct MatchedOutfitSwiftUIView: View {
             
         }
         .frame(width: 300.0, height: 560.0)
-        .background(Color(.sRGB, red: Double(matchedTop.red) / 255.0, green: Double(matchedTop.green) / 255.0, blue: Double(matchedTop.blue) / 255.0, opacity: 1.0))
+        .background(MatchedOutfitSwiftUIView.creamColor)
+//        Color(.sRGB, red: Double(matchedTop.red) / 255.0, green: Double(matchedTop.green) / 255.0, blue: Double(matchedTop.blue) / 255.0, opacity: 1.0)
         .clipShape(Rectangle())
         .cornerRadius(25)
-        .padding(4)
+        .padding(.bottom)
         .shadow(radius: 5)
     }
 }
