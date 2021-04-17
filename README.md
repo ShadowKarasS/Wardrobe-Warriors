@@ -4,6 +4,7 @@ This app is being designed to utilize the iPhone in your pocket to decide what t
 
 ## Screenshots
 <img src="https://user-images.githubusercontent.com/60236257/115128762-c0eb5300-9fa5-11eb-8729-81ab75fc5ef1.PNG" alt=" " width="225" height="487.5" />
+<img src="https://user-images.githubusercontent.com/60236257/115128819-30f9d900-9fa6-11eb-8c92-2676b5bb58d8.PNG" alt=" " width="225" height="487.5" />
 
 ## This is in a Demoable State but not complete.
 ### Things to consider while running
