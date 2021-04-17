@@ -9,7 +9,7 @@ This app is being designed to utilize the iPhone in your pocket to decide what t
 - All UI is not finalized
 ### Things we are working on
 - Refactoring UI based off these design drawings
-![MicrosoftTeams-image](https://user-images.githubusercontent.com/60236257/115128141-4a4c5680-9fa1-11eb-8709-7b6c135079a2.png=.5x)
+![MicrosoftTeams-image](https://user-images.githubusercontent.com/60236257/115128141-4a4c5680-9fa1-11eb-8709-7b6c135079a2.png | width=100)
 - A more robust matching algorithm
 - More accurate color picking
 - More accurate color categorizing
