@@ -13,7 +13,7 @@ This app is being designed to utilize the iPhone in your pocket to decide what t
 - More accurate color categorizing
 - Unit tests for edge cases
 - Refactoring UI based off these design drawings
-![MicrosoftTeams-image](https://user-images.githubusercontent.com/60236257/115128141-4a4c5680-9fa1-11eb-8709-7b6c135079a2.png =250x250)
+<img src"https://user-images.githubusercontent.com/60236257/115128141-4a4c5680-9fa1-11eb-8709-7b6c135079a2.png" alt="" width="450" height="800">
 ### Future Plans
 - Start up guide
 - Outfit saving
