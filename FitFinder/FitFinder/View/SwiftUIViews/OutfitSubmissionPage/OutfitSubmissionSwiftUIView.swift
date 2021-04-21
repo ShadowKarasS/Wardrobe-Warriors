@@ -9,6 +9,11 @@ import SwiftUI
 import CoreData
 
 struct OutfitSubmissionSwiftUIView: View {
+    private static let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
+    private static let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
+    private static let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
+    private static let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
+    
     let e = Weathers(t:-99)
     @State private var matchedTops = [ArticleOfClothing]()
     @State private var matchedBottoms = [ArticleOfClothing]()
@@ -21,19 +26,21 @@ struct OutfitSubmissionSwiftUIView: View {
     @State private var state: MatchingState = .unmatched
     
     var body: some View {
-        let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
-        let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
-        let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
-        let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
-        
         VStack {
             if state == .matched {
+                HStack {
+                    Text("Today's Picks for \(String(Int(e.getTemp())))º")
+                        .fontWeight(.bold)
+                        .font(.largeTitle)
+                        .foregroundColor(OutfitSubmissionSwiftUIView.creamColor)
+                }
+                .padding(8)
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
                         Text("Now the weather is \(e.getWeatherCode())!")
                             .font(.title2)
                             .fontWeight(.medium)
-                        Spacer()
+                            .foregroundColor(OutfitSubmissionSwiftUIView.creamColor)
                     }
                     .padding(3)
                     // can go out of bounds if not enough data
@@ -44,10 +51,16 @@ struct OutfitSubmissionSwiftUIView: View {
             }
             Spacer()
         }
-        .frame(width: 0.0)
-        .navigationBarTitle("Today's Picks for \(String(Int(e.getTemp())))º")
+        .padding(.top, -40)
+        .background(OutfitSubmissionSwiftUIView.blueColor.ignoresSafeArea(.all))
         .onAppear {
-            showingAlert = true
+            if checkNewDay() {
+                showingAlert = true
+            } else {
+                showingAlert = false
+                createOutfits()
+                state = .matched
+            }
         }
         .alert(isPresented: $showingAlert) { () -> Alert in
             let firstButton = Alert.Button.default(Text("Casual")) {
@@ -62,7 +75,6 @@ struct OutfitSubmissionSwiftUIView: View {
             }
             return Alert(title: Text("What kind of outfits are you looking for?"), primaryButton: firstButton, secondaryButton: secondButton)
         }
-        .background(blueColor.ignoresSafeArea(.all))
     }
     
     func createOutfits() {
@@ -73,7 +85,7 @@ struct OutfitSubmissionSwiftUIView: View {
         var topCount = 0
         var bottomCount = 0
         
-        if 	checkNewDay() {
+        if checkNewDay() {
             for i in 0..<articlesOfClothing.count {
                 // set picked back to zero and save
                 articlesOfClothing[i].picked = 0

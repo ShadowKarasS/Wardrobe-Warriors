@@ -17,7 +17,7 @@ enum Temperature: String {
     var emoji: String {
         switch self {
         case .veryCold:
-            return "🌨"
+            return "❄️"
         case .cold:
             return "☁️"
         case .mild:
@@ -25,7 +25,7 @@ enum Temperature: String {
         case .hot:
             return "🌤"
         case .veryHot:
-            return "☀️"
+            return "🔥"
         }
     }
 }
