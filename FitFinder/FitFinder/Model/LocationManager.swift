@@ -635,19 +635,19 @@ class Weathers:NSObject{
                 let decoder2 = JSONDecoder()
                 let filename = self.getDocumentsDirectory().appendingPathComponent("geolocation.txt")
                 do {
-                    let google = try decoder2.decode(Google.self, from: data!)
-                    //print("\nGoogle Result:\n")
-                    let s = google.results?.prefix(1)
-                    let result:String = (s?[0] .formatted_address)!
-                    //let e = Array(arrayLiteral: s)
-                    //print(s?[0] .formatted_address)
-                    do{
-                    try result.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
-                    }
-                    catch{
-                        print("Error save the geolocation")
-                        }
-                    //print(google)
+//                    let google = try decoder2.decode(Google.self, from: data!)
+//                    //print("\nGoogle Result:\n")
+//                    let s = google.results?.prefix(1)
+//                    let result:String = (s?[0] .formatted_address)!
+//                    //let e = Array(arrayLiteral: s)
+//                    //print(s?[0] .formatted_address)
+//                    do{
+//                    try result.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+//                    }
+//                    catch{
+//                        print("Error save the geolocation")
+//                        }
+//                    //print(google)
 
                 }
                 catch{

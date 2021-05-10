@@ -10,12 +10,6 @@ import CoreData
 import CoreGraphics
 
 struct ClothingSubmissionSwiftUIView: View {
-    
-    private static let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
-    private static let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
-    private static let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
-    private static let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
-    
     var existingArticleOfClothing: ArticleOfClothing?
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
@@ -43,14 +37,13 @@ struct ClothingSubmissionSwiftUIView: View {
         existingArticleOfClothing = nil
         
         //this changes the "thumb" that selects between items
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ClothingSubmissionSwiftUIView.peachColor)
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(FitFinderColors.peachColor.color)
         //and this changes the color for the whole "bar" background
-        UISegmentedControl.appearance().backgroundColor = UIColor(ClothingSubmissionSwiftUIView.creamColor)
+        UISegmentedControl.appearance().backgroundColor = UIColor(FitFinderColors.creamColor.color)
 
         //these lines change the text color for various states
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor(ClothingSubmissionSwiftUIView.creamColor)], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor(ClothingSubmissionSwiftUIView.blueColor)], for: .normal)
-        
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor(FitFinderColors.creamColor.color)], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor(FitFinderColors.blueColor.color)], for: .normal)
     }
     
     init(articleOfClothing: ArticleOfClothing) {
@@ -64,7 +57,7 @@ struct ClothingSubmissionSwiftUIView: View {
                     Text("Add New Clothes")
                         .fontWeight(.bold)
                         .font(.largeTitle)
-                        .foregroundColor(ClothingSubmissionSwiftUIView.creamColor)
+                        .foregroundColor(FitFinderColors.creamColor.color)
                 }
                 
                 if selectedImage != nil {
@@ -89,21 +82,21 @@ struct ClothingSubmissionSwiftUIView: View {
                         self.sourceType = .camera
                         self.isImagePickerDisplay.toggle()
                     }
+                    .foregroundColor(FitFinderColors.creamColor.color)
                     Spacer()
                     Button("Photo Library               ") {
                         self.sourceType = .photoLibrary
                         self.isImagePickerDisplay.toggle()
                     }
+                    .foregroundColor(FitFinderColors.creamColor.color)
                 }
                 Picker(selection: $pickedFormality, label: Text("Choose the Formality")) {
                     ForEach(0..<typeOfFormality.count) {
                         switch self.typeOfFormality[$0] {
                             case .casual:
                                 Text("Casual").tag($0)
-//                                    .foregroundColor(ClothingSubmissionSwiftUIView.yellowColor)
                             case .formal:
                                 Text("Formal").tag($0)
-//                                    .foregroundColor(ClothingSubmissionSwiftUIView.peachColor)
                         }
                     }
                 }
@@ -120,19 +113,19 @@ struct ClothingSubmissionSwiftUIView: View {
                         switch typesOfClothing[$0] {
                         case .shirt:
                             Text("Shirt")
-                                .foregroundColor(ClothingSubmissionSwiftUIView.creamColor)
+                                .foregroundColor(FitFinderColors.creamColor.color)
                         case .longSleeveShirt:
                             Text("Long-Sleeve Shirt")
-                                .foregroundColor(ClothingSubmissionSwiftUIView.creamColor)
+                                .foregroundColor(FitFinderColors.creamColor.color)
                         case .pants:
                             Text("Pants")
-                                .foregroundColor(ClothingSubmissionSwiftUIView.creamColor)
+                                .foregroundColor(FitFinderColors.creamColor.color)
                         case .shorts:
                             Text("Shorts")
-                                .foregroundColor(ClothingSubmissionSwiftUIView.creamColor)
+                                .foregroundColor(FitFinderColors.creamColor.color)
                         case .skirt:
                             Text("Skirt")
-                                .foregroundColor(ClothingSubmissionSwiftUIView.creamColor)
+                                .foregroundColor(FitFinderColors.creamColor.color)
                         }
                     }
                 }
@@ -140,7 +133,7 @@ struct ClothingSubmissionSwiftUIView: View {
                 Spacer()
                 
             }
-            .background(ClothingSubmissionSwiftUIView.blueColor.ignoresSafeArea(.all))
+            .background(FitFinderColors.blueColor.color.ignoresSafeArea(.all))
             .sheet(isPresented: self.$isImagePickerDisplay) {
                 ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
             }

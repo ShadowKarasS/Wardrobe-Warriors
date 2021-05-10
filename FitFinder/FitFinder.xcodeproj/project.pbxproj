@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C18BBF226222654008CE6C0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18BBF126222654008CE6C0 /* Weather.swift */; };
 		8C05E3F525E484FA0020AF41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E3F425E484FA0020AF41 /* Colors.swift */; };
 		8C05E41625E5CA730020AF41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05E41525E5CA730020AF41 /* Extensions.swift */; };
+		8C297819262B6F4C00BD9E57 /* FitFinderColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C297818262B6F4C00BD9E57 /* FitFinderColors.swift */; };
+		8C58641526426A370099D02E /* matchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C58641426426A370099D02E /* matchingTests.swift */; };
 		8C801D27261D3E73001D3D2B /* ArticleOfClothing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C801D25261D3E73001D3D2B /* ArticleOfClothing+CoreDataClass.swift */; };
 		8C801D28261D3E73001D3D2B /* ArticleOfClothing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C801D26261D3E73001D3D2B /* ArticleOfClothing+CoreDataProperties.swift */; };
 		8C801D30261D3FA8001D3D2B /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C801D2F261D3FA8001D3D2B /* Temperature.swift */; };
@@ -64,10 +65,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C18BBF126222654008CE6C0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		8C05E3F425E484FA0020AF41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8C05E3FB25E5BD660020AF41 /* FitFinderModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitFinderModel.xcdatamodel; sourceTree = "<group>"; };
 		8C05E41525E5CA730020AF41 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8C297818262B6F4C00BD9E57 /* FitFinderColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFinderColors.swift; sourceTree = "<group>"; };
+		8C58641426426A370099D02E /* matchingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = matchingTests.swift; sourceTree = "<group>"; };
 		8C801D25261D3E73001D3D2B /* ArticleOfClothing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8C801D26261D3E73001D3D2B /* ArticleOfClothing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleOfClothing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8C801D2F261D3FA8001D3D2B /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				8CC0F52E261787DA00FE876C /* WeatherFeed.swift */,
 				8CC0F533261787E200FE876C /* LocationManager.swift */,
 				8C882C5826224E3F00F4A70F /* Weather.swift */,
+				8C297818262B6F4C00BD9E57 /* FitFinderColors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 		8CE4D90825DB46F3005BF8FA /* FitFinderTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C58641426426A370099D02E /* matchingTests.swift */,
 				8CE4D90925DB46F3005BF8FA /* FitFinderTests.swift */,
 				8CE4D90B25DB46F3005BF8FA /* Info.plist */,
 			);
@@ -453,6 +457,7 @@
 				8CE4D8F825DB46F1005BF8FA /* FitFinderApp.swift in Sources */,
 				8CD4A8DD260AC63E00E7F518 /* MatchingState.swift in Sources */,
 				8CE4D94525DB4A18005BF8FA /* WardrobeNavigationSwiftUIView.swift in Sources */,
+				8C297819262B6F4C00BD9E57 /* FitFinderColors.swift in Sources */,
 				8CC0F534261787E200FE876C /* LocationManager.swift in Sources */,
 				8CE4D92625DB47B4005BF8FA /* OutfitSubmissionSwiftUIView.swift in Sources */,
 			);
@@ -462,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C58641526426A370099D02E /* matchingTests.swift in Sources */,
 				8CE4D90A25DB46F3005BF8FA /* FitFinderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

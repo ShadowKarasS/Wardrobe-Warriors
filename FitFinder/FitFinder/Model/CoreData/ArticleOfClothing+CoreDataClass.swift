@@ -107,6 +107,14 @@ public class ArticleOfClothing: NSManagedObject {
         }
     }
     
+    var clothingCategory: String {
+        if typeOfClothing == .longSleeveShirt || typeOfClothing == .shirt {
+            return "top"
+        } else {
+            return "bottom"
+        }
+    }
+    
     convenience init?(context: NSManagedObjectContext, image: UIImage?, red: Int16, blue: Int16, green: Int16, rawFormality: String, rawTypeOfClothing: String, rawAppropriateTemperature: String) {
         self.init(entity: ArticleOfClothing.entity(), insertInto: context)
         
