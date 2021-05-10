@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct MatchedOutfitSwiftUIView: View {
-    private static let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
-    private static let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
-    private static let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
-    private static let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
-
     var matchedTop: ArticleOfClothing
     var matchedBottom: ArticleOfClothing
     var numberPicked = 0
@@ -43,14 +38,14 @@ struct MatchedOutfitSwiftUIView: View {
         HStack {
             Text("   " + headlineText)
                 .font(.title)
-                .foregroundColor(MatchedOutfitSwiftUIView.peachColor)
+                .foregroundColor(FitFinderColors.peachColor.color)
                 .padding(3)
                 .background(
                     RoundedRectangle(
                         cornerRadius: 10,
                         style: .continuous
                     )
-                    .fill(MatchedOutfitSwiftUIView.creamColor)
+                    .fill(FitFinderColors.creamColor.color)
                 )
                 .offset(x: -6, y: 0)
                 Spacer()
@@ -78,7 +73,7 @@ struct MatchedOutfitSwiftUIView: View {
             
         }
         .frame(width: 300.0, height: 560.0)
-        .background(MatchedOutfitSwiftUIView.creamColor)
+        .background(FitFinderColors.creamColor.color)
 //        Color(.sRGB, red: Double(matchedTop.red) / 255.0, green: Double(matchedTop.green) / 255.0, blue: Double(matchedTop.blue) / 255.0, opacity: 1.0)
         .clipShape(Rectangle())
         .cornerRadius(25)

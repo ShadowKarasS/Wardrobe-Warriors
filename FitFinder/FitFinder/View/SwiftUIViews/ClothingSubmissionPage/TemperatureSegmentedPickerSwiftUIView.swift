@@ -46,13 +46,8 @@ struct SizeAwareViewModifier: ViewModifier {
 }
 
 struct TemperatureSegmentedPickerSwiftUIView: View {
-    private static let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
-    private static let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
-    
-//    private static let ActiveSegmentColor: Color = Color(.tertiarySystemBackground)
-    private static let ActiveSegmentColor: Color = peachColor
-//    private static let BackgroundColor: Color = Color(.secondarySystemBackground)
-    private static let BackgroundColor: Color = creamColor
+    private static let ActiveSegmentColor: Color = FitFinderColors.peachColor.color
+    private static let BackgroundColor: Color = FitFinderColors.creamColor.color
     private static let ShadowColor: Color = Color.black.opacity(0.2)
     private static let TextColor: Color = Color(.secondaryLabel)
     private static let SelectedTextColor: Color = Color(.label)

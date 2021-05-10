@@ -10,37 +10,31 @@ import CoreData
 
 struct WardrobeNavigationSwiftUIView: View {
     let locationmanager = LocationManager()
+    
     @FetchRequest(entity: ArticleOfClothing.entity(), sortDescriptors: []) var articlesOfClothing: FetchedResults<ArticleOfClothing>
     
     var body: some View {
-        
-        let yellowColor = Color(red: 221/255, green: 184/255, blue: 106/255)
-        let peachColor = Color(red: 228/255, green: 169/255, blue: 135/255)
-        let blueColor = Color(red: 155/255, green: 174/255, blue: 191/255)
-        let creamColor = Color(red: 233/255, green: 215/255, blue: 195/255)
-        
         NavigationView {
             VStack {
                 HStack {
                     Text("Wardrobe")
                         .fontWeight(.bold)
                         .font(.largeTitle)
-                        .foregroundColor(creamColor)
+                        .foregroundColor(FitFinderColors.creamColor.color)
                 }
                 .padding(8)
                 ScrollView(.vertical, showsIndicators: false) {
-                    
                     HStack {
                         Text("   Long Sleeve Shirts")
                             .font(.title)
-                            .foregroundColor(peachColor)
+                            .foregroundColor(FitFinderColors.peachColor.color)
                             .padding(3)
                             .background(
                                 RoundedRectangle(
                                     cornerRadius: 10,
                                     style: .continuous
                                 )
-                                .fill(creamColor)
+                                .fill(FitFinderColors.creamColor.color)
                             )
                             .offset(x: -6, y: 0)
                         Spacer()
@@ -61,13 +55,6 @@ struct WardrobeNavigationSwiftUIView: View {
                                                 .onTapGesture(count: 2) {
                                                     deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
                                                 }
-                                            // Old Way
-//                                                .gesture(
-//                                                                LongPressGesture(minimumDuration: 1)
-//                                                                    .onEnded { _ in
-//                                                                        deleteArticleOfClothing(selectedArticleOfClothing: articleOfClothing)
-//                                                                    }
-//                                                            )
                                         }
                                         .isDetailLink(false)
 
@@ -81,14 +68,14 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("   Shirts")
                             .font(.title)
-                            .foregroundColor(peachColor)
+                            .foregroundColor(FitFinderColors.peachColor.color)
                             .padding(3)
                             .background(
                                 RoundedRectangle(
                                     cornerRadius: 10,
                                     style: .continuous
                                 )
-                                .fill(creamColor)
+                                .fill(FitFinderColors.creamColor.color)
                             )
                             .offset(x: -6, y: 0)
                         Spacer()
@@ -122,14 +109,14 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("   Pants")
                             .font(.title)
-                            .foregroundColor(peachColor)
+                            .foregroundColor(FitFinderColors.peachColor.color)
                             .padding(3)
                             .background(
                                 RoundedRectangle(
                                     cornerRadius: 10,
                                     style: .continuous
                                 )
-                                .fill(creamColor)
+                                .fill(FitFinderColors.creamColor.color)
                             )
                             .offset(x: -6, y: 0)
                         Spacer()
@@ -163,14 +150,14 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("   Shorts")
                             .font(.title)
-                            .foregroundColor(peachColor)
+                            .foregroundColor(FitFinderColors.peachColor.color)
                             .padding(3)
                             .background(
                                 RoundedRectangle(
                                     cornerRadius: 10,
                                     style: .continuous
                                 )
-                                .fill(creamColor)
+                                .fill(FitFinderColors.creamColor.color)
                             )
                             .offset(x: -6, y: 0)
                         Spacer()
@@ -204,14 +191,14 @@ struct WardrobeNavigationSwiftUIView: View {
                     HStack {
                         Text("   Skirts")
                             .font(.title)
-                            .foregroundColor(peachColor)
+                            .foregroundColor(FitFinderColors.peachColor.color)
                             .padding(3)
                             .background(
                                 RoundedRectangle(
                                     cornerRadius: 10,
                                     style: .continuous
                                 )
-                                .fill(creamColor)
+                                .fill(FitFinderColors.creamColor.color)
                             )
                             .offset(x: -6, y: 0)
                         Spacer()
@@ -246,20 +233,21 @@ struct WardrobeNavigationSwiftUIView: View {
                 Spacer()
             }
             .padding(.top, -30)
-            .background(blueColor.ignoresSafeArea(.all))
+            .background(FitFinderColors.blueColor.color.ignoresSafeArea(.all))
 //            .onAppear { clearMatchedOutfits() }
             .navigationBarItems(leading:
                                     NavigationLink(destination: OutfitSubmissionSwiftUIView()) {
                                         Image(systemName: "calendar").imageScale(.medium)
                                     }
-                                    .isDetailLink(false),
+                                    .isDetailLink(false)
+                                    .foregroundColor(FitFinderColors.creamColor.color),
                                 trailing:
                                     NavigationLink(destination: ClothingSubmissionSwiftUIView()) {
                                         Image(systemName: "plus").imageScale(.medium)
                                     }
                                     .isDetailLink(false)
+                                    .foregroundColor(FitFinderColors.creamColor.color)
             )
-            
         }
         
     }
